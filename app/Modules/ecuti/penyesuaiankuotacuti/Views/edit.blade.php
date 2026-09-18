@@ -1,0 +1,251 @@
+<style type="text/css">.tablex td{ padding: 2px; }</style>
+<section class="content-header">
+    <h1>
+        Edit Penyesuaian Kuota Cuti<small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{!!url()!!}"> Dashboard</a></li>
+        <li><a href="#" id="back"> Penyesuaian Kuota Cuti</a></li>
+        <li class="active">Edit Penyesuaiankuotacuti</li>
+    </ol>
+</section>
+<section class="content">
+  <div class="box box-primary">
+    <?php
+    $rpos = strrpos(\Request::path(), '/'); 
+    $uri = substr(\Request::path(), 0, $rpos);
+
+    $where = "tb_01.nip = '".\Input::get('nip')."'";
+    $rs1 = \DB::table('tr_penyesuaian_cuti')->where('id',\Input::get('id'))->first();
+    if($rs1){
+        $where .="AND tr_penyesuaian_cuti.id = '".\Input::get('id')."'";
+    }
+    $rs = \DB::table('tb_01')
+    ->select('tr_penyesuaian_cuti.*','tb_01.*',
+        \DB::raw('CONCAT(tb_01.gdp,IF(LENGTH(tb_01.gdp)>0," ",""),tb_01.nama,IF(LENGTH(tb_01.gdb)>0,", ",""),tb_01.gdb) as namalengkap'))
+    ->leftjoin('tr_penyesuaian_cuti', 'tb_01.nip', '=', 'tr_penyesuaian_cuti.nip')
+    ->whereRaw($where)
+    ->first();
+    ?>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form id="form-penyesuaiankuota" class="form-horizontal form-penyesuaiankuota" method="POST" action="{!!url()!!}/ecuti/nominatifcuti/penyesuaiankuota" accept-charset="UTF-8">
+            {!!csrf_field()!!}
+            <input type="hidden" name="nip" value="{!! $rs->nip !!}">
+            <input type="hidden" name="id" value="{!! \Input::get('id') !!}">
+            <div class="box-body">
+                <table id="tabel-cuti" class="table table-hovered table-stripped" width="100%">
+                    <tr>
+                        <td width="35%">Hari Kerja</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <label class="radio-inline">
+                                <input type="radio" id="hari_kerja1" {!!($rs->hari_kerja==5)?"checked":""!!} value="5" name="hari_kerja"> 5 Hari
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" id="hari_kerja2" {!!($rs->hari_kerja==6)?"checked":""!!} value="6" name="hari_kerja"> 6 Hari
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" id="hari_kerja3" {!!($rs->hari_kerja==7)?"checked":""!!} value="7" name="hari_kerja"> 7 Hari
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Tahunan N-2</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td><input type="text" value="{!! $rs->k_tahunan_n2 !!}" name="k_tahunan_n2" class="form-control num maxtahunan6" required></td>
+                        <td>Hari</td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Tahunan N-1</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td><input type="text" value="{!! $rs->k_tahunan_n1 !!}" name="k_tahunan_n1" class="form-control num maxtahunan6" required></td>
+                        <td>Hari</td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Tahunan N</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td><input type="text" value="{!! $rs->k_tahunan_n !!}" name="k_tahunan_n" class="form-control num maxtahunan12" required></td>
+                        <td>Hari</td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Besar</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <table class="tablex" border="0" width="100%">
+                                <tr>
+                                    <td><input type="text" class="form-control num" size=4 disabled></td>
+                                    <td>Tahun</td>
+
+                                    <td><input type="text" value="{!! $rs->k_besar_bulan !!}" name="k_besar_bulan" class="form-control num" size=4 required></td>
+                                    <td>Bulan</td>
+
+                                    <td><input type="text" value="{!! $rs->k_besar_hari !!}" name="k_besar_hari" class="form-control num" size=4 required></td>
+                                    <td>Hari</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Sakit</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <table class="tablex" border="0" width="100%">
+                                <tr>
+                                    <td><input type="text" value="{!! $rs->k_sakit_tahun !!}" name="k_sakit_tahun" class="form-control num" size=4 required></td>
+                                    <td>Tahun</td>
+
+                                    <td><input type="text" value="{!! $rs->k_sakit_bulan !!}" name="k_sakit_bulan" class="form-control num" size=4 required></td>
+                                    <td>Bulan</td>
+
+                                    <td><input type="text" value="{!! $rs->k_sakit_hari !!}" name="k_sakit_hari" class="form-control num" size=4 required></td>
+                                    <td>Hari</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Melahirkan</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <table class="tablex" border="0" width="100%">
+                                <tr>
+                                    <td><input type="text" class="form-control num" size=4 disabled></td>
+                                    <td>Tahun</td>
+
+                                    <td><input type="text" name="k_lahir_bulan" class="form-control num" value="3" size=4 readonly></td>
+                                    <td>Bulan</td>
+
+                                    <td><input type="text" name="k_lahir_hari" class="form-control num" size=4 value="0" readonly></td>
+                                    <td>Hari</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Alasan Penting</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <table class="tablex" border="0" width="100%">
+                                <tr>
+                                    <td><input type="text" class="form-control num" size=4 disabled></td>
+                                    <td>Tahun</td>
+
+                                    <td><input type="text" value="{!! $rs->k_penting_bulan !!}" name="k_penting_bulan" class="form-control num" size=4 required></td>
+                                    <td>Bulan</td>
+
+                                    <td><input type="text" value="{!! $rs->k_penting_hari !!}" name="k_penting_hari" class="form-control num" size=4 required></td>
+                                    <td>Hari</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cuti Diluar Tanggungan Negara</td>
+                        <td class="text-center" width="2%"> : </td>
+                        <td>
+                            <table class="tablex" border="0" width="100%">
+                                <tr>
+                                    <td><input type="text" value="{!! $rs->k_cltn_tahun !!}" name="k_cltn_tahun" class="form-control num" size=4 required></td>
+                                    <td>Tahun</td>
+
+                                    <td><input type="text" value="{!! $rs->k_cltn_bulan !!}" name="k_cltn_bulan" class="form-control num" size=4 required></td>
+                                    <td>Bulan</td>
+
+                                    <td><input type="text" value="{!! $rs->k_cltn_hari !!}" name="k_cltn_hari" class="form-control num" size=4 required></td>
+                                    <td>Hari</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        {!! ClaravelHelpers::btnSave() !!}
+                        &nbsp;
+                        &nbsp;
+                        {!! ClaravelHelpers::btnCancelEdit() !!}
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</section>
+
+<script>
+    function refresh_page(){
+        <?php
+        $index_page = explode('/', \Request::path());
+        $jum = count($index_page) -1;
+        unset ($index_page[$jum]);
+        $index = join('/', $index_page);
+        echo 'var index_page=laravel_base + "/'.$index.'";';
+        ?>
+        $.ajax({
+            url : index_page,
+            type : 'GET',
+            beforeSend: function(){
+                preloader.on();
+            },
+            success:function(html){
+                preloader.off();
+                $('#utama').html(html);
+            }
+        });
+
+    }
+    $(document).ready(function(){
+
+        $('select').select2();
+        $('.num').keyup(function () {
+            if (this.value != this.value.replace(/[^0-9\.]/g, '')) {
+                this.value = this.value.replace(/[^0-9\.]/g, '');}
+            });
+
+        $('.maxtahunan6').keyup(function () {
+            if ($(this).val() > 6) {
+                $(this).val(6);
+            }
+        });
+        $('.maxtahunan12').keyup(function () {
+            if ($(this).val() > 12) {
+                $(this).val(12);
+            }
+        });
+
+        $('#batalkan,#back').on('click',function(e){
+            e.preventDefault();
+            refresh_page();
+        });
+        $('#form-penyesuaiankuota').on('submit',function(e){
+            var $this = $(this);
+            e.preventDefault();
+            bootbox.confirm('Simpan data?',function(a){
+                if (a == true){
+                    $.ajax({
+                        url : '{!!url()!!}/ecuti/nominatifcuti/penyesuaiankuota',
+                        type : 'POST',
+                        data : $this.serialize(),
+                        beforeSend: function(){
+                            preloader.on();
+                        },
+                        success:function(html){
+                            preloader.off();
+                            if(html=='1'){
+                                notification('Berhasil Disimpan','success');
+                                refresh_page();
+                            }else{
+                                notification(html,'danger');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

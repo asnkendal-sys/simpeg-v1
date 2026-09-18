@@ -1,0 +1,277 @@
+<style type='text/css'>
+	table {
+		font-family: 'Arial';
+		font-size: 9pt;
+		background: white;
+		line-height:1.5;
+	}
+
+	table{
+	border-collapse:collapse;
+	border-width:1px;
+	width:100%;
+	}
+
+	table thead tr th,table tfoot tr th{
+        background-color:#337ab7;
+        font-weight:bold;
+        padding:4px;
+	}
+
+	table tbody tr td{
+		padding:4px;
+		vertical-align:top;
+	}
+
+	table.gen tbody tr td{
+		/*height:40px; */
+	}
+
+	table tbody td div.r,table tfoot td div.r,table tfoot th div.r{
+		text-align:right;
+	}
+</style>
+
+<?php
+	$where = " tb_01.idjenkedudupeg not in('99','21') and r_gol.stspangkat != '1' ";
+    $having = "";
+
+    /* Kondisi bulan kpr */
+    if(Input::get('blnkpr') != ''){
+//        if(strlen(Input::get('blnkpr')) == '4') {
+//            $where .= "and substr(r_gol.tmtpkt,6,2)='0".Input::get('blnkpr')."'";
+//        }else if(strlen(Input::get('blnkpr')) == '10') {
+            $where .= "and substr(r_gol.tmtpkt,6,2)='".Input::get('blnkpr')."'";
+//        }
+    }
+
+    /* Kondisi tahun kpr */
+    if(Input::get('tahun') != ''){
+        $where .= "and left(r_gol.tmtpkt,4)='".Input::get('tahun')."'";
+    }
+
+    /* Kondisi skpd atau unit kerja */
+    if(Input::get('idskpd') != ''){
+        //$where .= "and left(tb_01.idskpd,2)='".Input::get('idskpd')."'";
+        $where.= "and tb_01.idskpd like '".Input::get('idskpd')."%'";
+    }
+
+    /* Kondisi jenis jabatan */
+    if(Input::get('idjenjab') != ''){
+        $where .= " and tb_01.idjenjab = '".Input::get('idjenjab')."'";
+    }
+
+    /* Kondisi jenis golongan */
+    if(Input::get('idgolru') != ''){
+        $where .= " and tb_01.idgolrupkt = '".Input::get('idgolru')."'";
+    }
+
+    $rs = \DB::table('tb_01')
+        ->select('tb_01.*', 'a_golruang.golru', 'a_esl.esl', 'a_skpd.path_short','a_dikstru.dikstru', 'a_jenjurusan.jenjurusan','a_tkpendid.tkpendid','a_agama.agama',
+            \DB::raw('CONCAT(tb_01.gdp,IF(LENGTH(tb_01.gdp)>0," ",""),tb_01.nama,IF(LENGTH(tb_01.gdb)>0,", ",""),tb_01.gdb) as namalengkap'),
+            \DB::raw('IF(tb_01.idjenjab>4,a_skpd.jab,IF(tb_01.idjenjab=2,a_jabfung.jabfung,IF(tb_01.idjenjab=3,a_jabfungum.jabfungum,IF(tb_01.idjenjab=4,a_jabnonjob.jabnonjob,"-")))) as jabatan'),
+            \DB::raw("
+                    CONCAT(
+                        IF((LEFT(tb_01.idgolrupkt,1) != LEFT(idgolrucpn,1)),
+                            (SUBSTR(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(IF(tb_01.tmtcpn='0000-00-00',tb_01.tmtpns,tb_01.tmtcpn))), '%Y%m')+0,1,
+                                (LENGTH(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(IF(tb_01.tmtcpn='0000-00-00',tb_01.tmtpns,tb_01.tmtcpn))), '%Y%m')+0)-2))
+                                -
+                                (IF((LEFT(tb_01.idgolrupkt,1) >= 3 AND LEFT(idgolrucpn,1) = 1), 11 - tb_01.mkthncpn,
+                                IF((LEFT(tb_01.idgolrupkt,1) >= 3 AND LEFT(idgolrucpn,1) = 2), 5 - tb_01.mkthncpn,
+                                    IF((LEFT(tb_01.idgolrupkt,1) = 2 AND LEFT(idgolrucpn,1) = 1), 6 - tb_01.mkthncpn, 0 ))))
+                            ),
+                            (SUBSTR(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(IF(tb_01.tmtcpn='0000-00-00',tb_01.tmtpns,tb_01.tmtcpn))), '%Y%m')+0,1,
+                                (LENGTH(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(IF(tb_01.tmtcpn='0000-00-00',tb_01.tmtpns,tb_01.tmtcpn))), '%Y%m')+0)-2))
+                                + tb_01.mkthncpn
+                            )
+                        ),
+                        RIGHT(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(IF(tb_01.tmtcpn='0000-00-00',tb_01.tmtpns,tb_01.tmtcpn))), '%Y%m')+0, 2)) AS mkskr
+                    "),
+            \DB::raw("DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(tb_01.tglhr)), '%Y%m')+0 AS usia")
+
+            )
+        ->join('a_skpd', 'tb_01.idskpd', '=', 'a_skpd.idskpd')
+        ->join('r_gol', 'tb_01.nip', '=', 'r_gol.nip')
+        ->leftjoin('a_esl', 'tb_01.idesljbt', '=', 'a_esl.idesl')
+        ->leftjoin('a_tkpendid', 'tb_01.idtkpendid', '=', 'a_tkpendid.idtkpendid')
+        ->leftjoin('a_jenjurusan', 'tb_01.idjenjurusan', '=', 'a_jenjurusan.idjenjurusan')
+        ->leftjoin('a_golruang', 'tb_01.idgolrupkt', '=', 'a_golruang.idgolru')
+        ->leftjoin('a_agama', 'tb_01.idagama', '=', 'a_agama.idagama')
+        ->leftjoin('a_jabfung', 'tb_01.idjabfung', '=', 'a_jabfung.idjabfung')
+        ->leftjoin('a_jabfungum', 'tb_01.idjabfungum', '=', 'a_jabfungum.idjabfungum')
+        ->leftjoin('a_jabnonjob', 'tb_01.idjabnonjob', '=', 'a_jabnonjob.idjabnonjob')
+        ->leftjoin('a_dikstru', 'tb_01.iddikstru', '=', 'a_dikstru.iddikstru')
+        ->whereRaw($where)
+        ->orderBy(\DB::raw('tb_01.idgolrupkt, tb_01.tmtpkt, tb_01.nama'))
+        ->get();
+?>
+
+<br><div align="center">
+<h4>REKAP KENAIKAN PANGKAT REGULER</h4>
+<h4>
+    <?php
+        echo ((Input::get('idskpd') != '')?'PADA '.strtoupper(getSkpd(Input::get('idskpd'))):'');
+        echo (Input::get('blnkpr')!='')?' '.strtoupper(formatBulan(Input::get('blnkpr'))):'';
+        echo (Input::get('tahun')!='')?' '.Input::get('tahun'):'';
+    ?>
+</h4>
+</div><br>
+<table border="1" width="100%" id="table table-striped table-hover table-condensed table-bordered">
+  <thead class="bg-primary">
+	<tr>
+	  <th rowspan="2"><div class="text-center">NO</div></th>
+	  <th rowspan="2">
+	    <div class="text-left">NAMA</div>
+	    <div class="text-left">TEMPAT, TGL LAHIR</div>
+	  </th>
+	  <th rowspan="2">
+	    <div class="text-center">NIP</div>
+	    <div class="text-center">KARPEG</div>
+	  </th>
+	  <th rowspan="2">
+	    <div class="text-center">GOL.</div>
+	    <div class="text-center">TMT</div>
+	  </th>
+	  <th rowspan="2">
+	    <div class="text-center">ESELON</div>
+	    <!-- <div class="text-center">TMT</div> -->
+	  </th>
+	  <th rowspan="2">
+	    <div class="text-center">JABATAN</div>
+	    <div class="text-center">UNIT KERJA</div>
+	    <div class="text-center">TMT</div>
+	  </th>
+	 <th colspan="2">
+	    <div class="text-center">MASA KERJA</div>
+	  </th>
+	  <th colspan="2">
+	    <div class="text-center">s/d SEKARANG</div>
+	  </th>
+	  <th rowspan="2">
+	    <div class="text-center">DIKLAT STRUKTURAL</div>
+	    <div class="text-center">TAHUN IJAZAH</div>
+	  </th>
+	  <th colspan="3">
+	    <div class="text-center">PENDIDIKAN TERAKHIR</div>
+	  </th>
+	    <th rowspan="2">
+	    <div class="text-center">AGAMA</div>
+	    <div class="text-center">USIA</div>
+	  </th>
+	</tr>
+	<tr>
+		<th>
+		    <div class="text-center">THN</div>
+		</th>
+		<th>
+		    <div class="text-center">BLN</div>
+		</th>
+		<th>
+		    <div class="text-center">THN</div>
+		</th>
+		<th>
+		    <div class="text-center">BLN</div>
+		</th>
+        <th>
+            <div class="text-center">TINGKAT</div>
+        </th>
+        <th>
+            <div class="text-center">JURUSAN</div>
+        </th>
+        <th>
+            <div class="text-center">TAHUN</div>
+        </th>
+	</tr>
+  </thead>
+  <tbody>
+	<?php
+     if((Input::get('idskpd') == '') && (Input::get('idjenjab') == '')){
+    ?>
+        <tr>
+            <td align="center" colspan="15"><h4>Unit Kerja dan Jenis Jabatan tidak dipilih</h4></td>
+        </tr>
+    <?php
+
+    }else{
+        if(count($rs) != ''){
+            $n = 0;
+            foreach($rs as $item){
+                $n++;
+                /*masa kerja*/
+                $mkbln = substr($item->mkskr,-2) + $item->mkblncpn;
+                if($mkbln > 12){
+                    $thnmkskr = substr($item->mkskr,0,-2)+1;
+                    $blnmkskr = "0".($mkbln-12);
+                }else{
+                    $thnmkskr = substr($item->mkskr,0,-2);
+                    $blnmkskr = (strlen($mkbln)==2)?$mkbln:"0".$mkbln;
+                }
+            ?>
+            <tr>
+                <td align="center">{!!$n!!}.</td>
+                <td>
+                    <div class="text-left">{!!$item->namalengkap!!}</div>
+                    <small><div class="text-left">{!!$item->tmlhr!!}, {!!($item->tglhr!='0000-00-00')?date('d-m-Y', strtotime($item->tglhr)):''!!}</div></small>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!fnip($item->nip)!!}</div>
+                    <div class="text-center">{!!$item->nokarpeg!!}</div>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$item->golru!!}</div>
+                    <div class="text-center">{!!($item->tmtpkt!='0000-00-00')?date('d-m-Y', strtotime($item->tmtpkt)):''!!}</div>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$item->esl!!}</div>
+                    <!--<div class="text-center">{!!($item->tmtjbt!='0000-00-00')?date('d-m-Y', strtotime($item->tmtjbt)):''!!}</div>-->
+                </td>
+                <td>
+                    <small>
+                        <div class="text-left">{!!$item->jabatan!!}</div>
+                        <div class="text-left"><i>Pada</i></div>
+                        <div class="text-left">{!!$item->path_short!!}</div>
+                        <div class="text-left">TMT : {!!($item->tmtjbt!='0000-00-00')?date('d-m-Y', strtotime($item->tmtjbt)):''!!}</div>
+                    </small>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$item->mkthnpkt!!}</div>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$item->mkblnpkt!!}</div>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$thnmkskr!!}</div>
+                </td>
+                <td align="center">
+                    <div class="text-center">{!!$blnmkskr!!}</div>
+                </td>
+                <td>
+                    <div class="text-left">{!!ucwords(strtolower($item->dikstru))!!}</div>
+                    <div class="text-left">{!!((substr($item->tgsel_dikstru,0,4)=='0000')?"":substr($item->tgsel_dikstru,0,4))!!}</div>
+                </td>
+                <td>
+                    <div class="text-left">{!!ucwords(strtolower($item->tkpendid))!!}</div>
+                </td>
+								<td>
+										<div class="text-left">{!!ucwords(strtolower($item->jenjurusan))!!}</div>
+								</td>
+								<td>
+										<div class="text-left">{!!$item->thijaz!!}</div>
+								</td>
+                <td align="center">
+                    <div class="text-center">{!!$item->agama!!}</div>
+                    <div class="text-center">{!!substr($item->usia,0,2)!!} thn {!!substr($item->usia,2,2)!!} bln</div>
+                </td>
+            </tr>
+        <?php
+            }} else {
+        ?>
+            <tr>
+                <td align="center" colspan="15"><h4>Data Tidak Ditemukan</h4></td>
+            </tr>
+        <?php  }
+        }
+        ?>
+
+  </tbody>
+</table>

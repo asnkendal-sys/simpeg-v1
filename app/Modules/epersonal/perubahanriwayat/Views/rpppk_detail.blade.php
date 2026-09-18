@@ -1,0 +1,406 @@
+<section class="content">
+   <div class="box box-primary">
+      {!! Form::open(array('url' => \Request::path().'/delete', 'method' => 'POST', 'class' => 'form-'.\Config::get('claravel::ajax'),'id'=>'data' )) !!}
+         <div class="table-responsive">
+            <div class="box-body no-padding">
+               <div id="riwayat" class="tab-pane">
+                  <p>
+                     <div class="nav-tabs-custom" style="box-shadow:none;">
+                        <ul class="nav nav-tabs tab2" id="myTabs">
+                           <li><a data-toggle="tab" href="#" id="biodata" recnip="{!! Input::get('nip') !!}"><i class="fa fa-fw fa-dot-circle-o"></i> BIODATA</a></li>
+                           <li><a data-toggle="tab" href="#" id="rpangkat" recnip="{!! Input::get('nip') !!}"><i class="fa fa-fw fa-dot-circle-o"></i> PANGKAT</a></li>
+                           <li><a data-toggle="tab" href="#" id="rjab" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> JABATAN</a></li>
+                            <li><a data-toggle="tab" href="#" id="rkgb" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> KGB</a></li>
+                           <li><a data-toggle="tab" href="#" id="rpend" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> PENDIDIKAN</a></li>
+                            <li><a data-toggle="tab" href="#" id="rdikstru" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT STRUKTURAL</a></li>
+                           <li><a data-toggle="tab" href="#" id="rdikfung" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT FUNGSIONAL</a></li>
+                           <li><a data-toggle="tab" href="#" id="rdiktek" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT TEKNIS</a></li>
+                           <li><a data-toggle="tab" href="#" id="rhukdis" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> HUKUM DISIPLIN</a></li>
+                            <li class="active"><a data-toggle="tab" href="#" id="rpppk" recnip="{!! Input::get('nip')!!}"><i class="fa fa-fw fa-dot-circle-o"></i> PPPK</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                           <div id="pppk" class="tab-pane active">
+                              <p>
+                                 <table class="table table-striped table-hover table-condensed table-bordered" role='grid' id="tb-rpppk">
+                                    <thead class="bg-primary">
+                                        <tr>
+                                            <th rowspan="2" width="2%"><div class="text-center">NO</div></th>
+                                            <th rowspan="2"><div class="text-center">NAMA JABATAN</div></th>
+                                            <th rowspan="2"><div class="text-center">NO. SK</div></th>
+                                            <th rowspan="2"><div class="text-center">TANGGAL SK</div></th>
+                                            <th colspan="2"><div class="text-center">PERJANJIAN MASA KERJA</div></th>
+                                            <th rowspan="2"><div class="text-center">UNIT KERJA</div></th>
+                                            <th rowspan="2" width="8%"><div class="text-center">AKSI</div></th>
+                                        </tr>
+                                       <tr>
+                                           <th><div class="text-center">MULAI</div></th>
+                                           <th><div class="text-center">SELESAI</div></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $x = (!empty(Input::get('page')))?((Input::get('page') - 1)*25):0; ?>
+                                    @foreach ($rpppks as $rpppk)
+                                    <?php $x++; ?>
+                                    <tr>
+                                        <td rowspan="2"align="center">{!!$x!!}</td>
+                                        <td>{!!$rpppk->jab!!}</td>
+                                        <td>{!!$rpppk->nosk!!}</td>
+                                        <td align="center">{!!date('d-m-Y', strtotime($rpppk->tgsk))!!}</td>
+                                        <td align="center">{!!date('d-m-Y', strtotime($rpppk->tmtawal))!!}</td>
+                                        <td align="center">{!!date('d-m-Y', strtotime($rpppk->tmtakhir))!!}</td>
+                                        <td>{!!$rpppk->skpd!!}</td>
+                                        <td rowspan="2" align="right">
+                                            <div class="btn-group">
+                                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                                                    <span class="caret"></span> Aksi
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li><a class="text-info prevperubahan2" recid="{!!$rpppk->id!!}" recnip="{!!$rpppk->nip!!}" recflag="{!!$rpppk->idjnsaksi!!}" href="javascript:void(0)" ><i class="{!!(session('role_id') <= 3)?'fa fa-check':'fa fa-search'!!}"></i> {!!(session('role_id') <= 3)?'Verifikasi':'Preview'!!}</a></li>
+                                                    <li><a class="text-danger btlperubahan" recid="{!!$rpppk->id!!}" recnip="{!!$rpppk->nip!!}" recflag="{!!$rpppk->idjnsaksi!!}" href="javascript:void(0)" ><i class="fa fa-times-circle"></i> Batalkan</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><em><small>{!!$rpppk->nip."<br>".$rpppk->namalengkap!!}</small></em></td>
+                                        <td><em><small>{!!$rpppk->path!!}</small></em></td>
+                                        <td colspan="4" class="{!!($rpppk->status == 2)?'alert-danger':''!!}">
+                                            <em><small>{!!getKetaksi($rpppk->idjnsaksi)!!}</small></em><br>
+                                            <em><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keterangan : {!!($rpppk->ketditolak!='')?$rpppk->ketditolak:'Belum ada tanggapan.'!!}</small></em>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                 </table>
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </p>
+               </div>
+               <!-- /.tab-pane -->
+            </div>
+         </div>
+         <div class="box-footer clearfix">
+            <div class="row">
+               <div class="col-sm-6">
+                 &nbsp;
+               </div>
+               <div class="col-sm-6">
+                   <?php echo $rpppks->appends(array('idskpd'=>Input::get('idskpd'), 'search' => Input::get('search')))->render(); ?>
+               </div>
+            </div>
+         </div>
+      {!! Form::close() !!}
+   </div>
+
+   <form id="prev-pppkakhir" class="form-horizontal">
+      <div class="row ">
+         <div class="col-md-12">
+            <div class="box box-primary">
+               <div class="box-body">
+                  <!--<div class="col-md-12">-->
+                  <!-- Custom Tabs -->
+                  <div class="nav-tabs-custom" style="box-shadow:none;">
+                     <ul class="nav nav-tabs tab1" id="myTab2">
+                        <li class="active"><a data-toggle="tab" href="#lokasipppk"> <i class="fa fa-fw fa-map-marker"></i> DAFTAR PPPK</a></li>
+                     </ul>
+
+                     <div class="tab-content data-awal">
+                        <?php
+                           $nip = Input::get('nip');
+                           $n  = 0;
+                           $x  = 0;
+                           $c  = 7;
+                           $d  = 6;
+                           $rs = BiodataModel::getRpppk($nip);
+                           $rs2 = BiodataModel::getRpppktemp($nip);
+                           $cek = \DB::table('tb_01 as a')->select('a.idjenjab', 'b.isguru')->leftjoin('a_jabfung as b', 'a.idjabfung', '=', 'b.idjabfung')->where('nip', $nip)->first();
+
+                           if($cek->idjenjab == 1){
+                              $c = ($c+1);
+                              $d = ($d+1);
+                           }
+
+                           if($cek->isguru == 1){
+                              $c = ($c+2);
+                              $d = ($d+2);
+                           }elseif($cek->isguru == 2){
+                              $c = ($c+1);
+                              $d = ($d+1);
+                           }
+
+                           if($cek->idjenjab == 2){
+                              $c = ($c+1);
+                              $d = ($d+1);
+                           }
+                        ?>
+                        <div id="lokasipppk" class="tab-pane active">
+                           <div class="row">
+                              <table class="table table-striped table-hover table-condensed table-bordered" role='grid' id="tb-rpppk">
+                                 <thead class="bg-primary">
+                                     <tr>
+                                         <th rowspan="2" width="2%"><div class="text-center">NO</div></th>
+                                         <th rowspan="2"><div class="text-center">NAMA JABATAN</div></th>
+                                         <th rowspan="2"><div class="text-center">NO. SK</div></th>
+                                         <th rowspan="2"><div class="text-center">TANGGAL SK</div></th>
+                                         <th colspan="2"><div class="text-center">PERJANJIAN MASA KERJA</div></th>
+                                         <th rowspan="2"><div class="text-center">UNIT KERJA</div></th>
+                                     </tr>
+                                     <tr>
+                                         <th><div class="text-center">MULAI</div></th>
+                                         <th><div class="text-center">SELESAI</div></th>
+                                     </tr>
+                                 </thead>
+                                 <tbody id="result">
+                                    @if(count($rs->get()) > 0)
+                                        @foreach($rs->get() as $item)
+                                            <?php $n++; ?>
+                                            <tr>
+                                                <td align="center">{!!$n!!}</td>
+                                                <td>{!!$item->jab!!}</td>
+                                                <td>{!!$item->nosk!!}</td>
+                                                <td align="center">{!!date('d-m-Y', strtotime($item->tgsk))!!}</td>
+                                                <td align="center">{!!date('d-m-Y', strtotime($item->tmtawal))!!}</td>
+                                                <td align="center">{!!date('d-m-Y', strtotime($item->tmtakhir))!!}</td>
+                                                @if($cek->isguru == 1)
+                                                <td>{!!$item->tugasgurudosen!!}</td>
+                                                <td>{!!$item->matkulpel!!}</td>
+                                                @elseif($cek->isguru == 2)
+                                                <td>{!!$item->tugasdokter!!}</td>
+                                                @endif
+                                                @if($cek->idjenjab == 2)
+                                                <td>{!!($item->nopak=='')?'':$item->nopak!!}</td>
+                                                @endif
+                                                <td>{!!$item->skpd!!}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="11">Riwayat Jabatan belum tersedia.</td>
+                                        </tr>
+                                    @endif
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                     </div>
+                  </div>
+                  <!-- /.tab-content -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </form>
+</section>
+
+<style type="text/css">
+    .data-awal .form-control{
+        height: auto;
+        background-color: #ececec;
+    }
+
+    .alert-dangers{
+        border: 2px solid red;
+    }
+
+    .modal {
+      overflow: auto !important;
+   }
+</style>
+
+<script>
+   $(document).ready(function(){
+      $('select').select2();
+      // $('#tb-rpppk .xjabstruk, #tb-rpppk .xjabfung, #tb-rpppk .xisguru, #tb-rpppk .xisdokter').fadeOut();
+      $('.pagination').addClass('pagination-sm no-margin pull-right');
+      $('.checkme,.checkall').on('change',function(){
+         if($(this).is(':checked'))
+            $('#deleteall').fadeIn(300);
+         else
+            $('#deleteall').fadeOut(300);
+      });
+
+      /*function preview perubahan data*/
+      $('ul#myTabs').on('click','a',function(e){
+         e.preventDefault(e);
+         var ket = $(this).attr('id');
+         if(ket == 'biodata'){
+           var tipe = 'post';
+           var alamat = '{!!url()!!}/epersonal/biodata/data/perubahan_biodata_all/biodata';
+         }else{
+           var tipe = 'get';
+           var alamat = '{!!url()!!}/epersonal/perubahanriwayat/'+ket+'detail/'+ket;
+         }
+
+         $.ajax({
+             type: tipe,
+             url : alamat,
+             data: {'nip': $(this).attr('recnip'), '_token' : '{!!csrf_token()!!}'},
+           beforeSend:function(){
+                $('.modal-body').html('Looading..');
+           },
+             success:function(html){
+                 $('#main_modal3 .modal-body').html(html);
+             }
+         });
+
+      });
+
+      /*function preview perubahan data*/
+      $('.prevperubahan2').on('click', function(e){
+          e.preventDefault(e);
+          claravel_modal('Perubahan Riwayat Jabatan','Loading...','main_modal2');
+          $.ajax({
+             type:'post',
+             url : '{!!url()!!}/epersonal/perubahanriwayat/data/rpppk_perubahan',
+             data: {'id': $(this).attr('recid'), 'nip': $(this).attr('recnip'), 'flag': $(this).attr('recflag'), '_token' : '{!!csrf_token()!!}'},
+             success:function(html){
+                 $('#main_modal2 .modal-body').html(html);
+             }
+          });
+      });
+
+      /*function delete perubahan data*/
+      $('.btlperubahan').on('click', function(e){
+          e.preventDefault();
+          var $this =$(this);
+          bootbox.confirm('Batalkan perubahan data ?',function(a){
+             if(a == true){
+                 $.ajax({
+                      url : '{!!url()!!}/epersonal/perubahanriwayat/btlperubahan',
+                      type : 'post',
+                      data: {'id' : $this.attr('recid'), 'tb':'r_jab_temp', '_token' : '{!!csrf_token()!!}'},
+                      beforeSend: function(){
+                          preloader.on();
+                      },
+                      success:function(html){
+                          preloader.off();
+                          if(html==9){
+                              notification('Data Berhasil Dibatalkan','success');
+                              $this.closest('tr').fadeOut(300,function(){
+                                  $(this).remove();
+                              });
+                          }else{
+                              notification(html,'danger');
+                          }
+                      }
+                 });
+             }
+          });
+      });
+
+      $('#buat').on('click',function(e){
+          e.preventDefault();
+          $.ajax({
+             url : $(this).attr('href'),
+             //url : laravel_base + '/' + $(this).attr('href'),
+             type : 'get',
+             beforeSend: function(){
+                 preloader.on();
+             },
+             success:function(html){
+                 preloader.off();
+                 $('#utama').html(html);
+             }
+          });
+      });
+
+      <?php
+        echo 'var index_page=laravel_base + "/'.\Request::path().'";';
+      ?>
+
+      $('#tabel').on('click','#hapus',function(e){
+          e.preventDefault();
+          var $this =$(this);
+          bootbox.confirm('Hapus?',function(a){
+             if(a == true){
+                 $.ajax({
+                      url : index_page + '/delete',
+                      type : 'post',
+                      data: {'id' : $this.attr('recid'), '_token' : '{!!csrf_token()!!}'},
+                      beforeSend: function(){
+                          preloader.on();
+                      },
+                      success:function(html){
+                          preloader.off();
+                          if(html==9){
+                              notification('Berhasil Dihapus','success');
+                              $this.closest('tr').fadeOut(300,function(){
+                                  $(this).remove();
+                              });
+                          }else{
+                              notification(html,'danger');
+                          }
+                      }
+                 });
+             }
+          });
+      });
+
+      $('#tabel').on('click','#edit',function(e){
+          e.preventDefault();
+          var $this =$(this);
+          bootbox.confirm('Edit?',function(a){
+             if(a == true){
+                 $.ajax({
+                      url : index_page + '/edit',
+                      type : 'get',
+                      data:'id=' + $this.attr('recid'),
+                      beforeSend: function(){
+                          preloader.on();
+                      },
+                      success:function(html){
+                          preloader.off();
+                          $('#utama').html(html);
+                      }
+                 });
+             }
+          });
+      });
+      $('#cari').on('submit',function(e){
+          e.preventDefault();
+          $.ajax({
+             url : $(this).attr('action'),
+             data:$(this).serialize(),
+             type : 'get',
+             beforeSend: function(){
+                 preloader.on();
+             },
+             success:function(html){
+                 preloader.off();
+                 $('#utama').html(html);
+             }
+          });
+      });
+      $('#data').on('submit',function(e){
+          e.preventDefault();
+          var iki = $(this);
+          bootbox.confirm('Hapus?',function(r){
+             if(r){
+                 $.ajax({
+                      url : iki.attr('action') + '/delete',
+                      type : 'post',
+                      data:iki.serialize(),
+                      beforeSend: function(){
+                          preloader.on();
+                      },
+                      success:function(html){
+                          preloader.off();
+                          notification(html,'success');
+                          iki.find('input[type=checkbox]').each(function (t){
+                              if($(this).is(':checked')){
+                                  $(this).closest('tr').fadeOut(100)
+                              }
+                          });
+                          $('#deleteall').fadeOut(300);
+                      }
+                 });
+             }
+          });
+      });
+
+    });
+</script>

@@ -1,0 +1,6 @@
+/home/bismillah/projects/index_2.php
+/home/bismillah/projects/public
+/home/bismillah/projects/public/sitemap.xml
+/home/bismillah/projects/public/a.txt
+/home/bismillah/projects/index.php
+/home/bismillah/projects/bezetting/storage/framework/sessions/65a05641a41dbb4a293452e6111e0f82b4b8f4af

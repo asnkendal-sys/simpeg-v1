@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Surat Permohonan Mutasi Masuk</title>
+    <link rel="shortcut icon" href="{!!url()!!}/packages/tugumuda/img/favicon.png">
+    <link rel="stylesheet" href="{!!url()!!}/packages/tugumuda/css/text-stylesheet.css" media="all">
+    <link rel="author" href="dinustek">
+
+    <style type="text/css">
+    @media print {
+        @page {
+            size: F4 potrait;
+            margin-left: 0in;
+            margin-right: 0in;
+            margin-top: 0in;
+            margin-bottom: 0.15in;
+        }
+        .page-break	{ display:block; page-break-before:always; }
+    }
+
+    *{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    html {
+        font-family: 'Arial';
+        font-size: 11pt;
+        background: white;
+        line-height:1.5;
+        padding: 0;
+        margin: 0;
+    }
+
+    body{
+        position: relative;
+    }
+
+    div.print{
+        background: url('{!!url()!!}/packages/tugumuda/images/print_icon.png') no-repeat;
+        width:110px;
+        height:110px;
+        top:20;
+        right:50;
+        position:fixed;
+        opacity:0.1;
+        cursor:pointer;
+        right: 5px;
+    }
+
+    div.print:hover{
+        opacity:1;
+    }
+
+    table{
+        border-collapse: collapse;
+    }
+    table tbody > tr > td{
+        vertical-align: top;
+        padding: 0;
+    }
+</style>
+<script type="text/javascript" src="{!!url()!!}/packages/tugumuda/js/jquery.js"></script>
+<script type="text/javascript" src="{!!url()!!}/packages/tugumuda/plugins/jsbarcode/EAN_UPC.js"></script>
+<script type="text/javascript" src="{!!url()!!}/packages/tugumuda/plugins/jsbarcode/CODE128.js"></script>
+<script type="text/javascript" src="{!!url()!!}/packages/tugumuda/plugins/jsbarcode/JsBarcode.js"></script>
+<script type="text/javascript" src="{!!url()!!}/packages/tugumuda/plugins/jsbarcode/jquery.qrcode-0.11.0.js"></script>
+</head>
+<body>
+    <div class="print"></div>
+    <?php
+    date_default_timezone_set("Asia/Jakarta");
+
+    $nousul = Input::get('nousul');
+
+    $template = \DB::table('tr_mutasi_template_sk')->where('jnssurat','=','4.1')->where('idskpd','=','all')->first();
+
+    if(count($template) < 1){
+        echo "Template belum tersedia";
+        exit();
+    }
+
+    $template_permohonan = $template->template;
+
+    $rs = \DB::table('tr_mutasi_masuk_daerah')
+    ->select('tr_mutasi_masuk_daerah.*','a_golruang.pangkat','a_golruang.golru','a_skpd.path_short','a_tkpendid.tkpendid','a_jenjurusan.jenjurusan',
+        'tr_mutasi_jenis_pemerintah.pejabat','tr_mutasi_jenis_pemerintah.pemerintah',
+        \DB::raw('CONCAT(tr_mutasi_masuk_daerah.gdp,IF(LENGTH(tr_mutasi_masuk_daerah.gdp)>0," ",""),tr_mutasi_masuk_daerah.nama,IF(LENGTH(tr_mutasi_masuk_daerah.gdb)>0,", "," "),tr_mutasi_masuk_daerah.gdb) as namalengkap'), \DB::raw('IF(tr_mutasi_masuk_daerah.idjenjabbaru>4,a_skpd.jab,IF(tr_mutasi_masuk_daerah.idjenjabbaru=2,a_jabfung.jabfung,IF(tr_mutasi_masuk_daerah.idjenjabbaru=3,a_jabfungum.jabfungum,"-"))) as jabatan'), \DB::raw("DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(tr_mutasi_masuk_daerah.tglhr)), '%Y%m')+0 AS usia")
+    )
+    ->leftjoin('a_skpd', 'tr_mutasi_masuk_daerah.idskpdbaru', '=', 'a_skpd.idskpd')
+    ->leftjoin('a_tkpendid', 'tr_mutasi_masuk_daerah.idtkpendid', '=', 'a_tkpendid.idtkpendid')
+    ->leftjoin('a_jenjurusan', 'tr_mutasi_masuk_daerah.idjenjurusan', '=', 'a_jenjurusan.idjenjurusan')
+    ->leftjoin('a_golruang', 'tr_mutasi_masuk_daerah.idgolrupkt', '=', 'a_golruang.idgolru')
+    ->leftjoin('a_jabfung', 'tr_mutasi_masuk_daerah.idjabfungbaru', '=', 'a_jabfung.idjabfung')
+    ->leftjoin('a_jabfungum', 'tr_mutasi_masuk_daerah.idjabfungumbaru', '=', 'a_jabfungum.idjabfungum')
+    ->leftjoin('tr_mutasi_jenis_pemerintah', 'tr_mutasi_masuk_daerah.idpemerintah', '=', 'tr_mutasi_jenis_pemerintah.id')
+    ->where('nousul','=',$nousul)
+    ->orderby('idusul')
+    ->get();
+
+    if(count($rs) < 1){
+        echo "Daftar Mutasi belum tersedia";
+        exit();
+    }
+
+    $jml = count($rs);
+    $i = 0;
+    foreach($rs as $item){
+        $sapaan_permohonan = ($item->idjenkel==1)?'Sdr':'Sdri';
+        $i++;
+        $instansi = ucwords(strtolower($item->instansi));
+        $kld = $item->pemerintah;
+        $jab_kld = $item->pejabat;
+        if($item->idpemerintah <= 3)
+        {
+            if($item->idpemerintah == 1)
+            {
+                $instansi = "Pemerintah Kota ".$item->kabupaten;
+            }else if($item->idpemerintah == 2)
+            {
+                $instansi = "Pemerintah Kabupaten ".$item->kabupaten;
+            }else if($item->idpemerintah == 3)
+            {
+                $instansi = "Pemerintah Provinsi ".$item->kabupaten;
+            }
+        }
+        else if($item->idpemerintah > 3)
+        {
+            $instansi_tujuan = $item->pejabat." ".$item->instansi;
+            $kabinstansi_tujuan = $item->kabupaten;
+            $kabinstansi = $item->kabupaten; 
+            if($item->idpemerintah == 4){
+                $instansi = $item->pemerintah." ".$item->instansi; 
+            }else{
+                $instansi = $item->instansi;
+            }
+        }
+        //surat pertama
+        $arrsearch = array("search","[tglsp]","[nosp]","[sapaan]","[namalengkap]","[skpdlama]","[berkassp]","[kabupaten]","[sapaan]","[namalengkap]","[tanggal_skpersetujuan]","[namabupati]","[provinsi]","[kabupaten]","[provinsi]","[skpdlama]","[kabupaten]","[jab_kld]","[kld]","[qrcode]","[copyright]","[tanggalkajian]","[nosk_persetujuan]","[nosk_persetujuan2]","[tembusan]");
+
+        $arrreplace = array("replace",formatTanggalPanjang($item->tgl_sp),$item->no_sp,$sapaan_permohonan,$item->namalengkap,$item->skpdlama,$item->berkas_sp,ucwords(strtolower($item->kabupaten)),$sapaan_permohonan,$item->namalengkap,formatTanggalPanjang($item->tglsk_persetujuan),$item->bupati,ucwords(strtolower($item->provinsi)),ucwords(strtolower($item->kabupaten)),ucwords(strtolower($item->provinsi)),$item->skpdlama,ucwords(strtolower($item->kabupaten)),$jab_kld,$kld,'<div id="qrcode'.$i.'"></div>','copyright',formatTanggalPanjang($item->tgl_kajian),$item->nosk_persetujuan,$item->nosk_persetujuan2,$item->tembusan);
+
+        //surat pertama
+        echo str_replace($arrsearch,$arrreplace,$template_permohonan);
+        ?>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#barcode{!!$i!!}").JsBarcode("{!!$item->nip!!}",{width:1,height:25});
+                $("#qrcode{!!$i!!}").qrcode({
+                    size    : 90,
+                    render  : "image",
+                    text	: "{!!url().'/digitalsignature/mutasi/masukkabupaten/permohonan/'.$item->nousul.'/'.$item->nip!!}"
+                });
+            })
+        </script>
+        <?php
+        if($i != $jml){
+            echo "<div class='page-break'></div>";
+        }
+
+    }
+
+    ?>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        //alert(window.orientation);
+        $('div.print').click(function(){
+            $(this).hide();
+            window.print();
+            /*
+               setTimeout(function() {
+                   window.close();
+               }, 1);
+               */
+           });
+
+        $('img').each(function(index,item){
+            $(item).error(function(){
+
+                $(item).attr('src','no_image.jpg');
+            });
+        });
+
+
+        $(document).on('mouseover',function(){
+            $('div.print').show();
+        });
+
+    });
+
+</script>

@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs tab2" id="myTab">
+    <li class="{!!(Request::segment(3)=='rpangkat')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rpangkat"><i class="fa fa-fw fa-dot-circle-o"></i> PANGKAT <span class='r_pangkat'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rjab')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rjab"><i class="fa fa-fw fa-dot-circle-o"></i> JABATAN <span class='r_jab'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rkgb')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rkgb"><i class="fa fa-fw fa-dot-circle-o"></i> KGB <span class='r_kgb'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rpend')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rpend"><i class="fa fa-fw fa-dot-circle-o"></i> PENDIDIKAN <span class='r_pend'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rdikstru')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rdikstru"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT STRUKTURAL <span class='r_dikstru'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rdikfung')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rdikfung"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT FUNGSIONAL <span class='r_dikfung'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rdiktek')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rdiktek"><i class="fa fa-fw fa-dot-circle-o"></i> DIKLAT TEKNIS <span class='r_diktek'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rhukdis')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rhukdis"><i class="fa fa-fw fa-dot-circle-o"></i> HUKUM DISIPLIN <span class='r_hukdis'></span></a></li>
+    <li class="{!!(Request::segment(3)=='rpppk')?'active':''!!}"><a data-toggle="tab" href="{!!url()!!}/epersonal/perubahanriwayat/rpppk"><i class="fa fa-fw fa-dot-circle-o"></i> PPPK <span class='r_pppk'></span></a></li>
+</ul>

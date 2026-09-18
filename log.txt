@@ -1,0 +1,518 @@
+Jul 13 01:20:05 simpegnew systemd[1]: Starting sysstat-collect.service - system activity accounting tool...
+Jul 13 01:20:05 simpegnew systemd[1]: sysstat-collect.service: Deactivated successfully.
+Jul 13 01:20:05 simpegnew systemd[1]: Finished sysstat-collect.service - system activity accounting tool.
+Jul 13 01:20:32 simpegnew containerd[1590]: time="2026-07-13T01:20:32.559843312+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:20:32 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered blocking state
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered disabled state
+Jul 13 01:20:32 simpegnew kernel: vethedcf749: entered allmulticast mode
+Jul 13 01:20:32 simpegnew kernel: vethedcf749: entered promiscuous mode
+Jul 13 01:20:32 simpegnew systemd-networkd[682998]: vethedcf749: Link UP
+Jul 13 01:20:32 simpegnew kernel: eth0: renamed from veth5bc8124
+Jul 13 01:20:32 simpegnew systemd-networkd[682998]: vethedcf749: Gained carrier
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered blocking state
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered forwarding state
+Jul 13 01:20:32 simpegnew dockerd[1841]: time="2026-07-13T01:20:32.755815707+07:00" level=info msg="sbJoin: gwep4 ''->'b08f3d288b87', gwep6 ''->''" eid=b08f3d288b87 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:20:32 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:20:32 simpegnew containerd[1590]: time="2026-07-13T01:20:32.845859342+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:20:32 simpegnew containerd[1590]: time="2026-07-13T01:20:32.845951147+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:20:32 simpegnew containerd[1590]: time="2026-07-13T01:20:32.845977023+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:20:32 simpegnew dockerd[1841]: time="2026-07-13T01:20:32.846338877+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered disabled state
+Jul 13 01:20:32 simpegnew kernel: veth5bc8124: renamed from eth0
+Jul 13 01:20:32 simpegnew systemd-networkd[682998]: vethedcf749: Lost carrier
+Jul 13 01:20:32 simpegnew systemd-networkd[682998]: vethedcf749: Link DOWN
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered disabled state
+Jul 13 01:20:32 simpegnew kernel: vethedcf749 (unregistering): left allmulticast mode
+Jul 13 01:20:32 simpegnew kernel: vethedcf749 (unregistering): left promiscuous mode
+Jul 13 01:20:32 simpegnew kernel: br-55dedfaacab4: port 2(vethedcf749) entered disabled state
+Jul 13 01:20:32 simpegnew systemd[1]: run-docker-netns-c9c3df9eaaad.mount: Deactivated successfully.
+Jul 13 01:20:32 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:20:48 simpegnew sshd[343442]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242  user=root
+Jul 13 01:20:50 simpegnew sshd[343458]: Connection closed by 103.250.11.156 port 47618 [preauth]
+Jul 13 01:20:50 simpegnew sshd[343442]: Failed password for root from 162.19.226.242 port 57444 ssh2
+Jul 13 01:20:51 simpegnew sshd[343442]: Received disconnect from 162.19.226.242 port 57444:11: Bye Bye [preauth]
+Jul 13 01:20:51 simpegnew sshd[343442]: Disconnected from authenticating user root 162.19.226.242 port 57444 [preauth]
+Jul 13 01:21:21 simpegnew sshd[343685]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.148.10.157  user=root
+Jul 13 01:21:23 simpegnew sshd[343685]: Failed password for root from 45.148.10.157 port 25504 ssh2
+Jul 13 01:21:25 simpegnew sshd[343685]: Failed password for root from 45.148.10.157 port 25504 ssh2
+Jul 13 01:21:28 simpegnew sshd[343685]: Failed password for root from 45.148.10.157 port 25504 ssh2
+Jul 13 01:21:31 simpegnew sshd[343685]: Failed password for root from 45.148.10.157 port 25504 ssh2
+Jul 13 01:21:32 simpegnew containerd[1590]: time="2026-07-13T01:21:32.912012363+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:21:32 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered blocking state
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered disabled state
+Jul 13 01:21:33 simpegnew kernel: veth839d05a: entered allmulticast mode
+Jul 13 01:21:33 simpegnew kernel: veth839d05a: entered promiscuous mode
+Jul 13 01:21:33 simpegnew systemd-networkd[682998]: veth839d05a: Link UP
+Jul 13 01:21:33 simpegnew kernel: eth0: renamed from veth7a29fae
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered blocking state
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered forwarding state
+Jul 13 01:21:33 simpegnew systemd-networkd[682998]: veth839d05a: Gained carrier
+Jul 13 01:21:33 simpegnew dockerd[1841]: time="2026-07-13T01:21:33.093022569+07:00" level=info msg="sbJoin: gwep4 ''->'3779d48fe9e4', gwep6 ''->''" eid=3779d48fe9e4 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:21:33 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:21:33 simpegnew dockerd[1841]: time="2026-07-13T01:21:33.147718099+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:21:33 simpegnew containerd[1590]: time="2026-07-13T01:21:33.147761990+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:21:33 simpegnew containerd[1590]: time="2026-07-13T01:21:33.147814298+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:21:33 simpegnew containerd[1590]: time="2026-07-13T01:21:33.147831694+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:21:33 simpegnew kernel: veth7a29fae: renamed from eth0
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered disabled state
+Jul 13 01:21:33 simpegnew systemd-networkd[682998]: veth839d05a: Lost carrier
+Jul 13 01:21:33 simpegnew systemd-networkd[682998]: veth839d05a: Link DOWN
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered disabled state
+Jul 13 01:21:33 simpegnew kernel: veth839d05a (unregistering): left allmulticast mode
+Jul 13 01:21:33 simpegnew kernel: veth839d05a (unregistering): left promiscuous mode
+Jul 13 01:21:33 simpegnew kernel: br-55dedfaacab4: port 2(veth839d05a) entered disabled state
+Jul 13 01:21:33 simpegnew systemd[1]: run-docker-netns-59af892cb41f.mount: Deactivated successfully.
+Jul 13 01:21:33 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:21:35 simpegnew sshd[343685]: Failed password for root from 45.148.10.157 port 25504 ssh2
+Jul 13 01:21:35 simpegnew sshd[343685]: Connection reset by authenticating user root 45.148.10.157 port 25504 [preauth]
+Jul 13 01:21:35 simpegnew sshd[343685]: PAM 4 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.148.10.157  user=root
+Jul 13 01:21:35 simpegnew sshd[343685]: PAM service(sshd) ignoring max retries; 5 > 3
+Jul 13 01:21:49 simpegnew sshd[344059]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.40.188.143  user=root
+Jul 13 01:21:51 simpegnew sshd[344059]: Failed password for root from 103.40.188.143 port 27946 ssh2
+Jul 13 01:21:53 simpegnew sshd[344059]: Connection closed by authenticating user root 103.40.188.143 port 27946 [preauth]
+Jul 13 01:22:33 simpegnew containerd[1590]: time="2026-07-13T01:22:33.188350066+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:22:33 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered blocking state
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered disabled state
+Jul 13 01:22:33 simpegnew kernel: vetha9fc75f: entered allmulticast mode
+Jul 13 01:22:33 simpegnew kernel: vetha9fc75f: entered promiscuous mode
+Jul 13 01:22:33 simpegnew systemd-networkd[682998]: vetha9fc75f: Link UP
+Jul 13 01:22:33 simpegnew kernel: eth0: renamed from veth13bcd67
+Jul 13 01:22:33 simpegnew systemd-networkd[682998]: vetha9fc75f: Gained carrier
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered blocking state
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered forwarding state
+Jul 13 01:22:33 simpegnew dockerd[1841]: time="2026-07-13T01:22:33.341553138+07:00" level=info msg="sbJoin: gwep4 ''->'ec96896d7d34', gwep6 ''->''" eid=ec96896d7d34 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:22:33 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:22:33 simpegnew containerd[1590]: time="2026-07-13T01:22:33.430364767+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:22:33 simpegnew containerd[1590]: time="2026-07-13T01:22:33.430457568+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:22:33 simpegnew containerd[1590]: time="2026-07-13T01:22:33.430488734+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:22:33 simpegnew dockerd[1841]: time="2026-07-13T01:22:33.430704458+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:22:33 simpegnew kernel: veth13bcd67: renamed from eth0
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered disabled state
+Jul 13 01:22:33 simpegnew systemd-networkd[682998]: vetha9fc75f: Lost carrier
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered disabled state
+Jul 13 01:22:33 simpegnew kernel: vetha9fc75f (unregistering): left allmulticast mode
+Jul 13 01:22:33 simpegnew kernel: vetha9fc75f (unregistering): left promiscuous mode
+Jul 13 01:22:33 simpegnew kernel: br-55dedfaacab4: port 2(vetha9fc75f) entered disabled state
+Jul 13 01:22:33 simpegnew systemd-networkd[682998]: vetha9fc75f: Link DOWN
+Jul 13 01:22:33 simpegnew systemd[1]: run-docker-netns-f7cccff05c65.mount: Deactivated successfully.
+Jul 13 01:22:33 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:22:34 simpegnew sshd[344418]: Invalid user william from 162.19.226.242 port 50352
+Jul 13 01:22:34 simpegnew sshd[344418]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:22:34 simpegnew sshd[344418]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242
+Jul 13 01:22:36 simpegnew sshd[344418]: Failed password for invalid user william from 162.19.226.242 port 50352 ssh2
+Jul 13 01:22:37 simpegnew sshd[344418]: Received disconnect from 162.19.226.242 port 50352:11: Bye Bye [preauth]
+Jul 13 01:22:37 simpegnew sshd[344418]: Disconnected from invalid user william 162.19.226.242 port 50352 [preauth]
+Jul 13 01:22:47 simpegnew sshd[344644]: Connection closed by 103.250.11.156 port 55794 [preauth]
+Jul 13 01:23:03 simpegnew dockerd[1841]: time="2026-07-13T01:23:03.107776418+07:00" level=error msg="[resolver] failed to query external DNS server" client-addr="udp:172.19.0.3:41586" dns-server="udp:8.8.8.8:53" error="read udp 172.19.0.3:41586->8.8.8.8:53: i/o timeout" question=";www.gstatic.com.\tIN\t AAAA"
+Jul 13 01:23:33 simpegnew containerd[1590]: time="2026-07-13T01:23:33.498187902+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:23:33 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered blocking state
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered disabled state
+Jul 13 01:23:33 simpegnew kernel: veth9423f07: entered allmulticast mode
+Jul 13 01:23:33 simpegnew kernel: veth9423f07: entered promiscuous mode
+Jul 13 01:23:33 simpegnew systemd-networkd[682998]: veth9423f07: Link UP
+Jul 13 01:23:33 simpegnew kernel: eth0: renamed from veth6ade94f
+Jul 13 01:23:33 simpegnew systemd-networkd[682998]: veth9423f07: Gained carrier
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered blocking state
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered forwarding state
+Jul 13 01:23:33 simpegnew dockerd[1841]: time="2026-07-13T01:23:33.682691146+07:00" level=info msg="sbJoin: gwep4 ''->'08711eab0c56', gwep6 ''->''" eid=08711eab0c56 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:23:33 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:23:33 simpegnew containerd[1590]: time="2026-07-13T01:23:33.772830808+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:23:33 simpegnew containerd[1590]: time="2026-07-13T01:23:33.772942719+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:23:33 simpegnew containerd[1590]: time="2026-07-13T01:23:33.773025243+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:23:33 simpegnew dockerd[1841]: time="2026-07-13T01:23:33.773020199+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered disabled state
+Jul 13 01:23:33 simpegnew kernel: veth6ade94f: renamed from eth0
+Jul 13 01:23:33 simpegnew systemd-networkd[682998]: veth9423f07: Lost carrier
+Jul 13 01:23:33 simpegnew systemd-networkd[682998]: veth9423f07: Link DOWN
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered disabled state
+Jul 13 01:23:33 simpegnew kernel: veth9423f07 (unregistering): left allmulticast mode
+Jul 13 01:23:33 simpegnew kernel: veth9423f07 (unregistering): left promiscuous mode
+Jul 13 01:23:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9423f07) entered disabled state
+Jul 13 01:23:33 simpegnew systemd[1]: run-docker-netns-2dfd888a489e.mount: Deactivated successfully.
+Jul 13 01:23:33 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:24:19 simpegnew sshd[345467]: Invalid user ubuntu from 162.19.226.242 port 39938
+Jul 13 01:24:19 simpegnew sshd[345467]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:24:19 simpegnew sshd[345467]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242
+Jul 13 01:24:21 simpegnew sshd[345467]: Failed password for invalid user ubuntu from 162.19.226.242 port 39938 ssh2
+Jul 13 01:24:21 simpegnew sshd[345467]: Received disconnect from 162.19.226.242 port 39938:11: Bye Bye [preauth]
+Jul 13 01:24:21 simpegnew sshd[345467]: Disconnected from invalid user ubuntu 162.19.226.242 port 39938 [preauth]
+Jul 13 01:24:33 simpegnew containerd[1590]: time="2026-07-13T01:24:33.844626000+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:24:33 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:24:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered blocking state
+Jul 13 01:24:33 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered disabled state
+Jul 13 01:24:33 simpegnew kernel: veth9b2fe8c: entered allmulticast mode
+Jul 13 01:24:33 simpegnew kernel: veth9b2fe8c: entered promiscuous mode
+Jul 13 01:24:33 simpegnew systemd-networkd[682998]: veth9b2fe8c: Link UP
+Jul 13 01:24:33 simpegnew kernel: eth0: renamed from vethdf23e8a
+Jul 13 01:24:34 simpegnew systemd-networkd[682998]: veth9b2fe8c: Gained carrier
+Jul 13 01:24:34 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered blocking state
+Jul 13 01:24:34 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered forwarding state
+Jul 13 01:24:34 simpegnew dockerd[1841]: time="2026-07-13T01:24:34.013404424+07:00" level=info msg="sbJoin: gwep4 ''->'9417714a9020', gwep6 ''->''" eid=9417714a9020 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:24:34 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:24:34 simpegnew dockerd[1841]: time="2026-07-13T01:24:34.089117527+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:24:34 simpegnew containerd[1590]: time="2026-07-13T01:24:34.088986003+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:24:34 simpegnew containerd[1590]: time="2026-07-13T01:24:34.089378947+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:24:34 simpegnew containerd[1590]: time="2026-07-13T01:24:34.089392812+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:24:34 simpegnew kernel: vethdf23e8a: renamed from eth0
+Jul 13 01:24:34 simpegnew systemd-networkd[682998]: veth9b2fe8c: Lost carrier
+Jul 13 01:24:34 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered disabled state
+Jul 13 01:24:34 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered disabled state
+Jul 13 01:24:34 simpegnew systemd-networkd[682998]: veth9b2fe8c: Link DOWN
+Jul 13 01:24:34 simpegnew kernel: veth9b2fe8c (unregistering): left allmulticast mode
+Jul 13 01:24:34 simpegnew kernel: veth9b2fe8c (unregistering): left promiscuous mode
+Jul 13 01:24:34 simpegnew kernel: br-55dedfaacab4: port 2(veth9b2fe8c) entered disabled state
+Jul 13 01:24:34 simpegnew systemd[1]: run-docker-netns-924c57687baa.mount: Deactivated successfully.
+Jul 13 01:24:34 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:24:44 simpegnew sshd[345804]: Invalid user mcserver from 103.250.11.156 port 51636
+Jul 13 01:24:44 simpegnew sshd[345804]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:24:44 simpegnew sshd[345804]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.250.11.156
+Jul 13 01:24:46 simpegnew sshd[345804]: Failed password for invalid user mcserver from 103.250.11.156 port 51636 ssh2
+Jul 13 01:24:47 simpegnew sshd[345804]: Received disconnect from 103.250.11.156 port 51636:11: Bye Bye [preauth]
+Jul 13 01:24:47 simpegnew sshd[345804]: Disconnected from invalid user mcserver 103.250.11.156 port 51636 [preauth]
+Jul 13 01:25:01 simpegnew CRON[345948]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jul 13 01:25:01 simpegnew CRON[345949]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jul 13 01:25:01 simpegnew CRON[345948]: pam_unix(cron:session): session closed for user root
+Jul 13 01:25:34 simpegnew containerd[1590]: time="2026-07-13T01:25:34.135009546+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:25:34 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered blocking state
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered disabled state
+Jul 13 01:25:34 simpegnew kernel: veth320d763: entered allmulticast mode
+Jul 13 01:25:34 simpegnew kernel: veth320d763: entered promiscuous mode
+Jul 13 01:25:34 simpegnew systemd-networkd[682998]: veth320d763: Link UP
+Jul 13 01:25:34 simpegnew kernel: eth0: renamed from veth7ffca51
+Jul 13 01:25:34 simpegnew systemd-networkd[682998]: veth320d763: Gained carrier
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered blocking state
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered forwarding state
+Jul 13 01:25:34 simpegnew dockerd[1841]: time="2026-07-13T01:25:34.289182364+07:00" level=info msg="sbJoin: gwep4 ''->'a24742ad18b7', gwep6 ''->''" eid=a24742ad18b7 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:25:34 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:25:34 simpegnew dockerd[1841]: time="2026-07-13T01:25:34.344546040+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:25:34 simpegnew containerd[1590]: time="2026-07-13T01:25:34.344658984+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:25:34 simpegnew containerd[1590]: time="2026-07-13T01:25:34.344744681+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:25:34 simpegnew containerd[1590]: time="2026-07-13T01:25:34.344774207+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:25:34 simpegnew systemd-networkd[682998]: veth320d763: Lost carrier
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered disabled state
+Jul 13 01:25:34 simpegnew kernel: veth7ffca51: renamed from eth0
+Jul 13 01:25:34 simpegnew systemd-networkd[682998]: veth320d763: Link DOWN
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered disabled state
+Jul 13 01:25:34 simpegnew kernel: veth320d763 (unregistering): left allmulticast mode
+Jul 13 01:25:34 simpegnew kernel: veth320d763 (unregistering): left promiscuous mode
+Jul 13 01:25:34 simpegnew kernel: br-55dedfaacab4: port 2(veth320d763) entered disabled state
+Jul 13 01:25:34 simpegnew systemd[1]: run-docker-netns-645a76ef9a66.mount: Deactivated successfully.
+Jul 13 01:25:34 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:25:59 simpegnew sshd[346520]: Invalid user zhangbin from 162.19.226.242 port 33024
+Jul 13 01:25:59 simpegnew sshd[346520]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:25:59 simpegnew sshd[346520]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242
+Jul 13 01:26:01 simpegnew sshd[346520]: Failed password for invalid user zhangbin from 162.19.226.242 port 33024 ssh2
+Jul 13 01:26:02 simpegnew sshd[346520]: Received disconnect from 162.19.226.242 port 33024:11: Bye Bye [preauth]
+Jul 13 01:26:02 simpegnew sshd[346520]: Disconnected from invalid user zhangbin 162.19.226.242 port 33024 [preauth]
+Jul 13 01:26:34 simpegnew containerd[1590]: time="2026-07-13T01:26:34.407377810+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:26:34 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered blocking state
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered disabled state
+Jul 13 01:26:34 simpegnew kernel: vethf132d88: entered allmulticast mode
+Jul 13 01:26:34 simpegnew kernel: vethf132d88: entered promiscuous mode
+Jul 13 01:26:34 simpegnew systemd-networkd[682998]: vethf132d88: Link UP
+Jul 13 01:26:34 simpegnew kernel: eth0: renamed from veth03e3933
+Jul 13 01:26:34 simpegnew systemd-networkd[682998]: vethf132d88: Gained carrier
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered blocking state
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered forwarding state
+Jul 13 01:26:34 simpegnew dockerd[1841]: time="2026-07-13T01:26:34.587832035+07:00" level=info msg="sbJoin: gwep4 ''->'6f795ab65466', gwep6 ''->''" eid=6f795ab65466 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:26:34 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:26:34 simpegnew dockerd[1841]: time="2026-07-13T01:26:34.679148634+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:26:34 simpegnew containerd[1590]: time="2026-07-13T01:26:34.679662640+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:26:34 simpegnew containerd[1590]: time="2026-07-13T01:26:34.679870253+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:26:34 simpegnew containerd[1590]: time="2026-07-13T01:26:34.679917631+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:26:34 simpegnew systemd-networkd[682998]: vethf132d88: Lost carrier
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered disabled state
+Jul 13 01:26:34 simpegnew kernel: veth03e3933: renamed from eth0
+Jul 13 01:26:34 simpegnew systemd-networkd[682998]: vethf132d88: Link DOWN
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered disabled state
+Jul 13 01:26:34 simpegnew kernel: vethf132d88 (unregistering): left allmulticast mode
+Jul 13 01:26:34 simpegnew kernel: vethf132d88 (unregistering): left promiscuous mode
+Jul 13 01:26:34 simpegnew kernel: br-55dedfaacab4: port 2(vethf132d88) entered disabled state
+Jul 13 01:26:34 simpegnew systemd[1]: run-docker-netns-724cf767944f.mount: Deactivated successfully.
+Jul 13 01:26:34 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:26:36 simpegnew sshd[346946]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.250.11.156  user=root
+Jul 13 01:26:38 simpegnew sshd[346946]: Failed password for root from 103.250.11.156 port 41366 ssh2
+Jul 13 01:26:38 simpegnew sshd[346946]: Received disconnect from 103.250.11.156 port 41366:11: Bye Bye [preauth]
+Jul 13 01:26:38 simpegnew sshd[346946]: Disconnected from authenticating user root 103.250.11.156 port 41366 [preauth]
+Jul 13 01:26:39 simpegnew sshd[346962]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.54.101.248  user=root
+Jul 13 01:26:41 simpegnew sshd[346962]: Failed password for root from 103.54.101.248 port 56206 ssh2
+Jul 13 01:26:42 simpegnew sshd[346962]: Connection closed by authenticating user root 103.54.101.248 port 56206 [preauth]
+Jul 13 01:26:45 simpegnew sshd[346992]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.148.10.152  user=root
+Jul 13 01:26:46 simpegnew sshd[346992]: Failed password for root from 45.148.10.152 port 55532 ssh2
+Jul 13 01:26:49 simpegnew sshd[346992]: Failed password for root from 45.148.10.152 port 55532 ssh2
+Jul 13 01:26:54 simpegnew sshd[346992]: Failed password for root from 45.148.10.152 port 55532 ssh2
+Jul 13 01:26:55 simpegnew sshd[346992]: Failed password for root from 45.148.10.152 port 55532 ssh2
+Jul 13 01:26:58 simpegnew sshd[346992]: Failed password for root from 45.148.10.152 port 55532 ssh2
+Jul 13 01:26:59 simpegnew sshd[346992]: Connection reset by authenticating user root 45.148.10.152 port 55532 [preauth]
+Jul 13 01:26:59 simpegnew sshd[346992]: PAM 4 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.148.10.152  user=root
+Jul 13 01:26:59 simpegnew sshd[346992]: PAM service(sshd) ignoring max retries; 5 > 3
+Jul 13 01:27:34 simpegnew containerd[1590]: time="2026-07-13T01:27:34.740994515+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:27:34 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:27:34 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered blocking state
+Jul 13 01:27:34 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered disabled state
+Jul 13 01:27:34 simpegnew kernel: veth640a293: entered allmulticast mode
+Jul 13 01:27:34 simpegnew kernel: veth640a293: entered promiscuous mode
+Jul 13 01:27:34 simpegnew systemd-networkd[682998]: veth640a293: Link UP
+Jul 13 01:27:34 simpegnew kernel: eth0: renamed from veth0460ede
+Jul 13 01:27:34 simpegnew systemd-networkd[682998]: veth640a293: Gained carrier
+Jul 13 01:27:34 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered blocking state
+Jul 13 01:27:34 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered forwarding state
+Jul 13 01:27:34 simpegnew dockerd[1841]: time="2026-07-13T01:27:34.914940204+07:00" level=info msg="sbJoin: gwep4 ''->'ed849d80faf8', gwep6 ''->''" eid=ed849d80faf8 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:27:34 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:27:34 simpegnew containerd[1590]: time="2026-07-13T01:27:34.988739132+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:27:34 simpegnew containerd[1590]: time="2026-07-13T01:27:34.988856256+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:27:34 simpegnew dockerd[1841]: time="2026-07-13T01:27:34.988819583+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:27:34 simpegnew containerd[1590]: time="2026-07-13T01:27:34.988886482+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:27:35 simpegnew kernel: veth0460ede: renamed from eth0
+Jul 13 01:27:35 simpegnew systemd-networkd[682998]: veth640a293: Lost carrier
+Jul 13 01:27:35 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered disabled state
+Jul 13 01:27:35 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered disabled state
+Jul 13 01:27:35 simpegnew kernel: veth640a293 (unregistering): left allmulticast mode
+Jul 13 01:27:35 simpegnew kernel: veth640a293 (unregistering): left promiscuous mode
+Jul 13 01:27:35 simpegnew kernel: br-55dedfaacab4: port 2(veth640a293) entered disabled state
+Jul 13 01:27:35 simpegnew systemd-networkd[682998]: veth640a293: Link DOWN
+Jul 13 01:27:35 simpegnew systemd[1]: run-docker-netns-3419804b6376.mount: Deactivated successfully.
+Jul 13 01:27:35 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:27:41 simpegnew sshd[347570]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242  user=root
+Jul 13 01:27:43 simpegnew sshd[347570]: Failed password for root from 162.19.226.242 port 52582 ssh2
+Jul 13 01:27:43 simpegnew sshd[347570]: Received disconnect from 162.19.226.242 port 52582:11: Bye Bye [preauth]
+Jul 13 01:27:43 simpegnew sshd[347570]: Disconnected from authenticating user root 162.19.226.242 port 52582 [preauth]
+Jul 13 01:28:20 simpegnew sshd[347885]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.250.11.156  user=root
+Jul 13 01:28:22 simpegnew sshd[347885]: Failed password for root from 103.250.11.156 port 52618 ssh2
+Jul 13 01:28:22 simpegnew sshd[347885]: Received disconnect from 103.250.11.156 port 52618:11: Bye Bye [preauth]
+Jul 13 01:28:22 simpegnew sshd[347885]: Disconnected from authenticating user root 103.250.11.156 port 52618 [preauth]
+Jul 13 01:28:35 simpegnew containerd[1590]: time="2026-07-13T01:28:35.066032209+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:28:35 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered blocking state
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered disabled state
+Jul 13 01:28:35 simpegnew kernel: vethaec0aca: entered allmulticast mode
+Jul 13 01:28:35 simpegnew kernel: vethaec0aca: entered promiscuous mode
+Jul 13 01:28:35 simpegnew systemd-networkd[682998]: vethaec0aca: Link UP
+Jul 13 01:28:35 simpegnew kernel: eth0: renamed from vethf1fbd55
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered blocking state
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered forwarding state
+Jul 13 01:28:35 simpegnew systemd-networkd[682998]: vethaec0aca: Gained carrier
+Jul 13 01:28:35 simpegnew dockerd[1841]: time="2026-07-13T01:28:35.207982794+07:00" level=info msg="sbJoin: gwep4 ''->'8381ec8b453d', gwep6 ''->''" eid=8381ec8b453d ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:28:35 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:28:35 simpegnew dockerd[1841]: time="2026-07-13T01:28:35.269499852+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:28:35 simpegnew containerd[1590]: time="2026-07-13T01:28:35.269513844+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:28:35 simpegnew containerd[1590]: time="2026-07-13T01:28:35.269569016+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:28:35 simpegnew containerd[1590]: time="2026-07-13T01:28:35.269585923+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered disabled state
+Jul 13 01:28:35 simpegnew kernel: vethf1fbd55: renamed from eth0
+Jul 13 01:28:35 simpegnew systemd-networkd[682998]: vethaec0aca: Lost carrier
+Jul 13 01:28:35 simpegnew systemd-networkd[682998]: vethaec0aca: Link DOWN
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered disabled state
+Jul 13 01:28:35 simpegnew kernel: vethaec0aca (unregistering): left allmulticast mode
+Jul 13 01:28:35 simpegnew kernel: vethaec0aca (unregistering): left promiscuous mode
+Jul 13 01:28:35 simpegnew kernel: br-55dedfaacab4: port 2(vethaec0aca) entered disabled state
+Jul 13 01:28:35 simpegnew systemd[1]: run-docker-netns-db1d1b2d6030.mount: Deactivated successfully.
+Jul 13 01:28:35 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:29:23 simpegnew sshd[348506]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242  user=root
+Jul 13 01:29:26 simpegnew sshd[348506]: Failed password for root from 162.19.226.242 port 37270 ssh2
+Jul 13 01:29:28 simpegnew sshd[348506]: Received disconnect from 162.19.226.242 port 37270:11: Bye Bye [preauth]
+Jul 13 01:29:28 simpegnew sshd[348506]: Disconnected from authenticating user root 162.19.226.242 port 37270 [preauth]
+Jul 13 01:29:35 simpegnew containerd[1590]: time="2026-07-13T01:29:35.310568940+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:29:35 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered blocking state
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered disabled state
+Jul 13 01:29:35 simpegnew kernel: veth9e58329: entered allmulticast mode
+Jul 13 01:29:35 simpegnew kernel: veth9e58329: entered promiscuous mode
+Jul 13 01:29:35 simpegnew systemd-networkd[682998]: veth9e58329: Link UP
+Jul 13 01:29:35 simpegnew kernel: eth0: renamed from vethf53b3df
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered blocking state
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered forwarding state
+Jul 13 01:29:35 simpegnew systemd-networkd[682998]: veth9e58329: Gained carrier
+Jul 13 01:29:35 simpegnew dockerd[1841]: time="2026-07-13T01:29:35.482694834+07:00" level=info msg="sbJoin: gwep4 ''->'aa0401948e06', gwep6 ''->''" eid=aa0401948e06 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:29:35 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:29:35 simpegnew containerd[1590]: time="2026-07-13T01:29:35.570587498+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:29:35 simpegnew containerd[1590]: time="2026-07-13T01:29:35.570681897+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:29:35 simpegnew containerd[1590]: time="2026-07-13T01:29:35.570719306+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:29:35 simpegnew dockerd[1841]: time="2026-07-13T01:29:35.571117490+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:29:35 simpegnew systemd-networkd[682998]: veth9e58329: Lost carrier
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered disabled state
+Jul 13 01:29:35 simpegnew kernel: vethf53b3df: renamed from eth0
+Jul 13 01:29:35 simpegnew systemd-networkd[682998]: veth9e58329: Link DOWN
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered disabled state
+Jul 13 01:29:35 simpegnew kernel: veth9e58329 (unregistering): left allmulticast mode
+Jul 13 01:29:35 simpegnew kernel: veth9e58329 (unregistering): left promiscuous mode
+Jul 13 01:29:35 simpegnew kernel: br-55dedfaacab4: port 2(veth9e58329) entered disabled state
+Jul 13 01:29:35 simpegnew systemd[1]: run-docker-netns-d6de689573e6.mount: Deactivated successfully.
+Jul 13 01:29:35 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:30:05 simpegnew systemd[1]: Starting sysstat-collect.service - system activity accounting tool...
+Jul 13 01:30:05 simpegnew systemd[1]: sysstat-collect.service: Deactivated successfully.
+Jul 13 01:30:05 simpegnew systemd[1]: Finished sysstat-collect.service - system activity accounting tool.
+Jul 13 01:30:11 simpegnew sshd[349022]: Connection closed by 103.250.11.156 port 35498 [preauth]
+Jul 13 01:30:35 simpegnew containerd[1590]: time="2026-07-13T01:30:35.631284498+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:30:35 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered blocking state
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered disabled state
+Jul 13 01:30:35 simpegnew kernel: vetha2e0898: entered allmulticast mode
+Jul 13 01:30:35 simpegnew kernel: vetha2e0898: entered promiscuous mode
+Jul 13 01:30:35 simpegnew systemd-networkd[682998]: vetha2e0898: Link UP
+Jul 13 01:30:35 simpegnew kernel: eth0: renamed from vethb2d3798
+Jul 13 01:30:35 simpegnew systemd-networkd[682998]: vetha2e0898: Gained carrier
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered blocking state
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered forwarding state
+Jul 13 01:30:35 simpegnew dockerd[1841]: time="2026-07-13T01:30:35.812284762+07:00" level=info msg="sbJoin: gwep4 ''->'5c57bbcfcc79', gwep6 ''->''" eid=5c57bbcfcc79 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:30:35 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:30:35 simpegnew containerd[1590]: time="2026-07-13T01:30:35.894034293+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:30:35 simpegnew containerd[1590]: time="2026-07-13T01:30:35.894095373+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:30:35 simpegnew containerd[1590]: time="2026-07-13T01:30:35.894117021+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:30:35 simpegnew dockerd[1841]: time="2026-07-13T01:30:35.894831558+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered disabled state
+Jul 13 01:30:35 simpegnew kernel: vethb2d3798: renamed from eth0
+Jul 13 01:30:35 simpegnew systemd-networkd[682998]: vetha2e0898: Lost carrier
+Jul 13 01:30:35 simpegnew systemd-networkd[682998]: vetha2e0898: Link DOWN
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered disabled state
+Jul 13 01:30:35 simpegnew kernel: vetha2e0898 (unregistering): left allmulticast mode
+Jul 13 01:30:35 simpegnew kernel: vetha2e0898 (unregistering): left promiscuous mode
+Jul 13 01:30:35 simpegnew kernel: br-55dedfaacab4: port 2(vetha2e0898) entered disabled state
+Jul 13 01:30:36 simpegnew systemd[1]: run-docker-netns-50bc677f4792.mount: Deactivated successfully.
+Jul 13 01:30:36 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:31:06 simpegnew sshd[349570]: Invalid user teamspeak from 162.19.226.242 port 50298
+Jul 13 01:31:06 simpegnew sshd[349570]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:31:06 simpegnew sshd[349570]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242
+Jul 13 01:31:08 simpegnew sshd[349570]: Failed password for invalid user teamspeak from 162.19.226.242 port 50298 ssh2
+Jul 13 01:31:09 simpegnew sshd[349570]: Received disconnect from 162.19.226.242 port 50298:11: Bye Bye [preauth]
+Jul 13 01:31:09 simpegnew sshd[349570]: Disconnected from invalid user teamspeak 162.19.226.242 port 50298 [preauth]
+Jul 13 01:31:36 simpegnew containerd[1590]: time="2026-07-13T01:31:36.129744435+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:31:36 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered blocking state
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered disabled state
+Jul 13 01:31:36 simpegnew kernel: veth3de6cfa: entered allmulticast mode
+Jul 13 01:31:36 simpegnew kernel: veth3de6cfa: entered promiscuous mode
+Jul 13 01:31:36 simpegnew systemd-networkd[682998]: veth3de6cfa: Link UP
+Jul 13 01:31:36 simpegnew kernel: eth0: renamed from vetha07afae
+Jul 13 01:31:36 simpegnew systemd-networkd[682998]: veth3de6cfa: Gained carrier
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered blocking state
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered forwarding state
+Jul 13 01:31:36 simpegnew dockerd[1841]: time="2026-07-13T01:31:36.271951375+07:00" level=info msg="sbJoin: gwep4 ''->'98b992b19291', gwep6 ''->''" eid=98b992b19291 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:31:36 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:31:36 simpegnew dockerd[1841]: time="2026-07-13T01:31:36.327982294+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:31:36 simpegnew containerd[1590]: time="2026-07-13T01:31:36.328350778+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:31:36 simpegnew containerd[1590]: time="2026-07-13T01:31:36.328404942+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:31:36 simpegnew containerd[1590]: time="2026-07-13T01:31:36.328418902+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:31:36 simpegnew systemd-networkd[682998]: veth3de6cfa: Lost carrier
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered disabled state
+Jul 13 01:31:36 simpegnew kernel: vetha07afae: renamed from eth0
+Jul 13 01:31:36 simpegnew systemd-networkd[682998]: veth3de6cfa: Link DOWN
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered disabled state
+Jul 13 01:31:36 simpegnew kernel: veth3de6cfa (unregistering): left allmulticast mode
+Jul 13 01:31:36 simpegnew kernel: veth3de6cfa (unregistering): left promiscuous mode
+Jul 13 01:31:36 simpegnew kernel: br-55dedfaacab4: port 2(veth3de6cfa) entered disabled state
+Jul 13 01:31:36 simpegnew systemd[1]: run-docker-netns-03d139c75045.mount: Deactivated successfully.
+Jul 13 01:31:36 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:32:02 simpegnew sshd[350143]: Connection closed by 103.250.11.156 port 45948 [preauth]
+Jul 13 01:32:11 simpegnew sshd[350210]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=62.60.130.219  user=root
+Jul 13 01:32:13 simpegnew sshd[350210]: Failed password for root from 62.60.130.219 port 28038 ssh2
+Jul 13 01:32:18 simpegnew sshd[350210]: Failed password for root from 62.60.130.219 port 28038 ssh2
+Jul 13 01:32:20 simpegnew sshd[350210]: Failed password for root from 62.60.130.219 port 28038 ssh2
+Jul 13 01:32:25 simpegnew sshd[350210]: Failed password for root from 62.60.130.219 port 28038 ssh2
+Jul 13 01:32:29 simpegnew sshd[350210]: Failed password for root from 62.60.130.219 port 28038 ssh2
+Jul 13 01:32:30 simpegnew sshd[350210]: Connection reset by authenticating user root 62.60.130.219 port 28038 [preauth]
+Jul 13 01:32:30 simpegnew sshd[350210]: PAM 4 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=62.60.130.219  user=root
+Jul 13 01:32:30 simpegnew sshd[350210]: PAM service(sshd) ignoring max retries; 5 > 3
+Jul 13 01:32:36 simpegnew containerd[1590]: time="2026-07-13T01:32:36.387310147+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:32:36 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered blocking state
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered disabled state
+Jul 13 01:32:36 simpegnew kernel: vethac8b545: entered allmulticast mode
+Jul 13 01:32:36 simpegnew kernel: vethac8b545: entered promiscuous mode
+Jul 13 01:32:36 simpegnew systemd-networkd[682998]: vethac8b545: Link UP
+Jul 13 01:32:36 simpegnew kernel: eth0: renamed from vethf926c37
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered blocking state
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered forwarding state
+Jul 13 01:32:36 simpegnew systemd-networkd[682998]: vethac8b545: Gained carrier
+Jul 13 01:32:36 simpegnew dockerd[1841]: time="2026-07-13T01:32:36.568874632+07:00" level=info msg="sbJoin: gwep4 ''->'3f5859dd1a8e', gwep6 ''->''" eid=3f5859dd1a8e ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:32:36 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:32:36 simpegnew containerd[1590]: time="2026-07-13T01:32:36.659691059+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:32:36 simpegnew containerd[1590]: time="2026-07-13T01:32:36.659739329+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:32:36 simpegnew containerd[1590]: time="2026-07-13T01:32:36.659754037+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:32:36 simpegnew dockerd[1841]: time="2026-07-13T01:32:36.660229150+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:32:36 simpegnew kernel: vethf926c37: renamed from eth0
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered disabled state
+Jul 13 01:32:36 simpegnew systemd-networkd[682998]: vethac8b545: Lost carrier
+Jul 13 01:32:36 simpegnew systemd-networkd[682998]: vethac8b545: Link DOWN
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered disabled state
+Jul 13 01:32:36 simpegnew kernel: vethac8b545 (unregistering): left allmulticast mode
+Jul 13 01:32:36 simpegnew kernel: vethac8b545 (unregistering): left promiscuous mode
+Jul 13 01:32:36 simpegnew kernel: br-55dedfaacab4: port 2(vethac8b545) entered disabled state
+Jul 13 01:32:36 simpegnew systemd[1]: run-docker-netns-90eb8dc414ab.mount: Deactivated successfully.
+Jul 13 01:32:36 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:32:49 simpegnew sshd[350648]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242  user=root
+Jul 13 01:32:50 simpegnew sshd[350648]: Failed password for root from 162.19.226.242 port 59124 ssh2
+Jul 13 01:32:51 simpegnew sshd[350648]: Received disconnect from 162.19.226.242 port 59124:11: Bye Bye [preauth]
+Jul 13 01:32:51 simpegnew sshd[350648]: Disconnected from authenticating user root 162.19.226.242 port 59124 [preauth]
+Jul 13 01:33:36 simpegnew containerd[1590]: time="2026-07-13T01:33:36.731131975+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:33:36 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:33:36 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered blocking state
+Jul 13 01:33:36 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered disabled state
+Jul 13 01:33:36 simpegnew kernel: vethc6a5bca: entered allmulticast mode
+Jul 13 01:33:36 simpegnew kernel: vethc6a5bca: entered promiscuous mode
+Jul 13 01:33:36 simpegnew systemd-networkd[682998]: vethc6a5bca: Link UP
+Jul 13 01:33:36 simpegnew kernel: eth0: renamed from veth96368af
+Jul 13 01:33:36 simpegnew systemd-networkd[682998]: vethc6a5bca: Gained carrier
+Jul 13 01:33:36 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered blocking state
+Jul 13 01:33:36 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered forwarding state
+Jul 13 01:33:36 simpegnew dockerd[1841]: time="2026-07-13T01:33:36.895178143+07:00" level=info msg="sbJoin: gwep4 ''->'7405f86428a4', gwep6 ''->''" eid=7405f86428a4 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:33:36 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:33:36 simpegnew containerd[1590]: time="2026-07-13T01:33:36.963639530+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:33:36 simpegnew containerd[1590]: time="2026-07-13T01:33:36.963720058+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:33:36 simpegnew containerd[1590]: time="2026-07-13T01:33:36.963747425+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:33:36 simpegnew dockerd[1841]: time="2026-07-13T01:33:36.964046628+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:33:37 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered disabled state
+Jul 13 01:33:37 simpegnew kernel: veth96368af: renamed from eth0
+Jul 13 01:33:37 simpegnew systemd-networkd[682998]: vethc6a5bca: Lost carrier
+Jul 13 01:33:37 simpegnew systemd-networkd[682998]: vethc6a5bca: Link DOWN
+Jul 13 01:33:37 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered disabled state
+Jul 13 01:33:37 simpegnew kernel: vethc6a5bca (unregistering): left allmulticast mode
+Jul 13 01:33:37 simpegnew kernel: vethc6a5bca (unregistering): left promiscuous mode
+Jul 13 01:33:37 simpegnew kernel: br-55dedfaacab4: port 2(vethc6a5bca) entered disabled state
+Jul 13 01:33:37 simpegnew systemd[1]: run-docker-netns-73a53d249039.mount: Deactivated successfully.
+Jul 13 01:33:37 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:33:46 simpegnew sshd[351219]: Invalid user iptv from 103.250.11.156 port 56140
+Jul 13 01:33:46 simpegnew sshd[351219]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:33:46 simpegnew sshd[351219]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.250.11.156
+Jul 13 01:33:48 simpegnew sshd[351219]: Failed password for invalid user iptv from 103.250.11.156 port 56140 ssh2
+Jul 13 01:33:48 simpegnew sshd[351219]: Received disconnect from 103.250.11.156 port 56140:11: Bye Bye [preauth]
+Jul 13 01:33:48 simpegnew sshd[351219]: Disconnected from invalid user iptv 103.250.11.156 port 56140 [preauth]
+Jul 13 01:34:35 simpegnew sshd[351584]: Invalid user daniele from 162.19.226.242 port 54582
+Jul 13 01:34:35 simpegnew sshd[351584]: pam_unix(sshd:auth): check pass; user unknown
+Jul 13 01:34:35 simpegnew sshd[351584]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=162.19.226.242
+Jul 13 01:34:37 simpegnew containerd[1590]: time="2026-07-13T01:34:37.033187154+07:00" level=info msg="connecting to shim 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5" address="unix:///run/containerd/s/a2d7f01a7cd906a27858bd3149945f42b51352dccde2ae76634cfbb362404914" namespace=moby protocol=ttrpc version=3
+Jul 13 01:34:37 simpegnew systemd[1]: Started docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope - libcontainer container 920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered blocking state
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered disabled state
+Jul 13 01:34:37 simpegnew kernel: vethae90ff7: entered allmulticast mode
+Jul 13 01:34:37 simpegnew kernel: vethae90ff7: entered promiscuous mode
+Jul 13 01:34:37 simpegnew systemd-networkd[682998]: vethae90ff7: Link UP
+Jul 13 01:34:37 simpegnew kernel: eth0: renamed from veth157f24c
+Jul 13 01:34:37 simpegnew systemd-networkd[682998]: vethae90ff7: Gained carrier
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered blocking state
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered forwarding state
+Jul 13 01:34:37 simpegnew dockerd[1841]: time="2026-07-13T01:34:37.187834744+07:00" level=info msg="sbJoin: gwep4 ''->'51a1fd6d2f06', gwep6 ''->''" eid=51a1fd6d2f06 ep=file-backup net=infra_default nid=55dedfaacab4
+Jul 13 01:34:37 simpegnew systemd[1]: docker-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.scope: Deactivated successfully.
+Jul 13 01:34:37 simpegnew containerd[1590]: time="2026-07-13T01:34:37.242056509+07:00" level=info msg="shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:34:37 simpegnew containerd[1590]: time="2026-07-13T01:34:37.242101874+07:00" level=info msg="cleaning up after shim disconnected" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:34:37 simpegnew containerd[1590]: time="2026-07-13T01:34:37.242112226+07:00" level=info msg="cleaning up dead shim" id=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 namespace=moby
+Jul 13 01:34:37 simpegnew dockerd[1841]: time="2026-07-13T01:34:37.242045107+07:00" level=info msg="ignoring event" container=920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jul 13 01:34:37 simpegnew systemd-networkd[682998]: vethae90ff7: Lost carrier
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered disabled state
+Jul 13 01:34:37 simpegnew kernel: veth157f24c: renamed from eth0
+Jul 13 01:34:37 simpegnew systemd-networkd[682998]: vethae90ff7: Link DOWN
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered disabled state
+Jul 13 01:34:37 simpegnew kernel: vethae90ff7 (unregistering): left allmulticast mode
+Jul 13 01:34:37 simpegnew kernel: vethae90ff7 (unregistering): left promiscuous mode
+Jul 13 01:34:37 simpegnew kernel: br-55dedfaacab4: port 2(vethae90ff7) entered disabled state
+Jul 13 01:34:37 simpegnew systemd[1]: run-docker-netns-a6d15eaac474.mount: Deactivated successfully.
+Jul 13 01:34:37 simpegnew systemd[1]: var-lib-docker-rootfs-overlayfs-920af122d83c84bd6ccdd815de641a4a4270129ee8c3192d4040f9176bc400d5.mount: Deactivated successfully.
+Jul 13 01:34:38 simpegnew sshd[351584]: Failed password for invalid user daniele from 162.19.226.242 port 54582 ssh2
+Jul 13 01:34:39 simpegnew sshd[351584]: Received disconnect from 162.19.226.242 port 54582:11: Bye Bye [preauth]
+Jul 13 01:34:39 simpegnew sshd[351584]: Disconnected from invalid user daniele 162.19.226.242 port 54582 [preauth]

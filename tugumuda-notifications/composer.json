@@ -1,0 +1,17 @@
+{
+    "name": "tugumuda/notifications",
+    "autoload": {
+        "psr-4": {
+            "Tugumuda\\Notifications\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilham Eka Prasetya",
+            "email": "ilhampraset30@gmail.com"
+        }
+    ],
+    "require": {      
+      "guzzlehttp/guzzle": "6.5"
+    }
+}

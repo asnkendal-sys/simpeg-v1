@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'texgyrecursorregular';
+    src: url('../font/texgyrecursor-regular-webfont.eot');
+    src: url('../font/texgyrecursor-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/texgyrecursor-regular-webfont.woff') format('woff'),
+         url('../font/texgyrecursor-regular-webfont.ttf') format('truetype'),
+         url('../font/texgyrecursor-regular-webfont.svg#texgyrecursorregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'texgyrecursoritalic';
+    src: url('../font/texgyrecursor-italic-webfont.eot');
+    src: url('../font/texgyrecursor-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/texgyrecursor-italic-webfont.woff') format('woff'),
+         url('../font/texgyrecursor-italic-webfont.ttf') format('truetype'),
+         url('../font/texgyrecursor-italic-webfont.svg#texgyrecursoritalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'texgyrecursorbold';
+    src: url('../font/texgyrecursor-bold-webfont.eot');
+    src: url('../font/texgyrecursor-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/texgyrecursor-bold-webfont.woff') format('woff'),
+         url('../font/texgyrecursor-bold-webfont.ttf') format('truetype'),
+         url('../font/texgyrecursor-bold-webfont.svg#texgyrecursorbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'texgyrecursorbold_italic';
+    src: url('../font/texgyrecursor-bolditalic-webfont.eot');
+    src: url('../font/texgyrecursor-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/texgyrecursor-bolditalic-webfont.woff') format('woff'),
+         url('../font/texgyrecursor-bolditalic-webfont.ttf') format('truetype'),
+         url('../font/texgyrecursor-bolditalic-webfont.svg#texgyrecursorbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.kode{
+	font-size: 10px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	text-rendering: optimizeLegibility;
+}
+.kode.regular{
+	font-family: 'texgyrecursorregular';
+}
+.kode.italic{
+	font-family: 'texgyrecursoritalic';
+}
+.kode.bold{
+	font-family: 'texgyrecursorbold';
+}
+.kode.bolditalic{
+	font-family: 'texgyrecursorbold_italic';
+}

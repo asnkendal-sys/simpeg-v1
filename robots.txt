@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /.git
+Disallow: /storage
+Disallow: /packages
+Disallow: /storage/app
+Disallow: /storage/app/?siapgas=S128+DI+INDONESIA
+Disallow: /storage/app/?siapgas=cari138
+Disallow: /storage/app/?siapgas=sukses138
+Disallow: /storage/app/?siapgas=ngame11
+Disallow: /storage/app/?siapgas=DIGMAAN+LOGIN

@@ -1,0 +1,105 @@
+<?php namespace App\Modules\tte\pemberhentianpppk\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Modules\tte\pemberhentianpppk\Models\PemberhentianpppkModel;
+use App\Models\Riwayat\TTE;
+use App\Modules\tte\kenaikangaji\Models\KenaikangajiModel;
+use Input,View, Request, Form, File;
+
+/**
+* Pemberhentianpppk Controller
+* @var Pemberhentianpppk
+* Generate from Custom Laravel 5.1 by Aa Gun. 
+*
+* Developed by Divisi Software Development - Dinustek. 
+* Please write log when you do some modification, don't change anything unless you know what you do
+* Semarang, 2016
+*/
+
+class PemberhentianpppkController extends Controller {
+    protected $pemberhentianpppk;
+
+    public function __construct(PemberhentianpppkModel $pemberhentianpppk){
+        $this->pemberhentianpppk = $pemberhentianpppk;
+    }
+
+    public function getIndex(){
+        cekAjax();
+        $jenis = 'PPPK-PEMBERHENTIAN';
+        $where = "a.sts_kontrak = 3 and r_tte.jenis = \"".$jenis."\"";
+
+        if (session('role_id') > 3) {
+            $where .= ' and nip_pejabat ='.\Session::get('user_id');
+        }
+
+        if (Input::has('search') or Input::get('status_tte') != '' or Input::get('idgolru') != '') {
+            if(strlen(Input::has('search')) > 0) {
+                $where .=" and (a.nip like '%".Input::get('search')."%' or a.nama like '%".Input::get('search')."%')";
+            }
+
+            if (Input::get('status_tte') != '') {
+                $where .= ' and proses ='.Input::get('status_tte');
+            }    
+           
+            if (Input::get('idgolru') != '') {
+                $where .= ' and idgolru ='.Input::get('idgolru');
+            }
+
+            $ttes = \DB::table('r_tte')
+                ->select('a.*','r_tte.*','a_jenpens.jenpens',\DB::raw("DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(a.tglhr)), '%Y%m')+0 AS usia"))
+                    ->join('tr_pppk as a', function($join)use($jenis){
+                        $join->on('r_tte.id_sk', '=', 'a.idpppk')
+                        ->on('r_tte.nip_pengusul','=','a.nip')
+                        ->where('r_tte.jenis','=',$jenis);                    
+                    })
+                    ->join('a_jenpens', 'a.idjenpens', '=', 'a_jenpens.idjenpens')                    
+                    ->whereRaw($where)
+                    ->orderBy('tmtawal', 'desc')
+                    ->orderBy('idskpd')
+                    ->paginate($_ENV['configurations']['list-limit']);
+        }else{
+            $ttes = PemberhentianpppkModel::all();
+        }
+
+        return View::make('pemberhentianpppk::index', compact('ttes'));
+    }
+
+
+    public function getCreate(){
+        cekAjax();
+        return View::make('pemberhentianpppk::create');
+    }
+
+    public function postCreate(){
+        cekAjax();
+        $input = Input::all();
+        $validation = \Validator::make($input, PemberhentianpppkModel::$rules);
+        if ($validation->passes()){
+            $input['user_id'] = \Session::get('user_id');
+            $input['role_id'] = \Session::get('role_id');
+            echo ($this->pemberhentianpppk->create($input))?1:"Gagal Disimpan";
+        }
+        else{
+            echo 'Input tidak valid';
+        }
+    }
+
+    //{controller-show}
+
+    public function postData(){
+        //$data['nip']  = Input::get('nip');
+        $view = Request::segment(4);
+        return View::make('pemberhentianpppk::'.$view.'_data', $data);
+    }
+
+    /* Function untuk menampilkan modal atribut surat pengantar*/
+    public function getModalpreviewpppk() {
+        cekAjax();
+        $data = Input::get('data');
+        
+        $previews=TTE::whereIn('id',$data)->get();
+
+        return View::make('pemberhentianpppk::previewpppk_modal', compact('data','previews'));
+    }
+    
+}

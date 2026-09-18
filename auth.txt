@@ -1,0 +1,1 @@
+2026-07-13T09:56:10.899766+07:00 simpegnew sudo:     root : TTY=pts/1 ; PWD=/home/bismillah/projects ; USER=root ; COMMAND=/usr/bin/grep 'Jul 13 01:2' /var/log/auth.log

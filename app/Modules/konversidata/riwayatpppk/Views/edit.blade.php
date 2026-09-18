@@ -1,0 +1,165 @@
+<section class="content-header">
+    <h1>
+        Edit Riwayatpppk<small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{!!url()!!}"> Dashboard</a></li>
+        <li><a href="#" id="back"> Riwayatpppk</a></li>
+        <li class="active">Edit Riwayatpppk</li>
+    </ol>
+</section>
+<section class="content">
+  <div class="box box-primary">
+    <?php
+      $rpos = strrpos(\Request::path(), '/'); 
+      $uri = substr(\Request::path(), 0, $rpos);
+    ?>
+    <div class="row">
+      <div class="col-md-12">
+        {!! Form::model($riwayatpppk, array('url' => $uri, 'method' => 'POST', 'class'=>'form-horizontal form-'.\Config::get('claravel::ajax') ,'id'=>'simpan')) !!}
+        {!! Form::hidden('id') !!}
+        <div class="box-body">
+            				<div class="form-group">
+					{!! Form::label('konversi', 'konversi:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('konversi', null, array('class'=> 'form-control', 'placeholder'=>'konversi')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('terkonversi', 'terkonversi:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('terkonversi', null, array('class'=> 'form-control', 'placeholder'=>'terkonversi')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('gagalkonversi', 'gagalkonversi:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('gagalkonversi', null, array('class'=> 'form-control', 'placeholder'=>'gagalkonversi')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('jumlah_data', 'jumlah_data:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('jumlah_data', null, array('class'=> 'form-control', 'placeholder'=>'jumlah_data')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('waktu', 'waktu:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('waktu', null, array('class'=> 'form-control', 'placeholder'=>'waktu')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('filename', 'filename:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('filename', null, array('class'=> 'form-control', 'placeholder'=>'filename')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('file_path', 'file_path:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('file_path', null, array('class'=> 'form-control', 'placeholder'=>'file_path')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('filename_original', 'filename_original:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('filename_original', null, array('class'=> 'form-control', 'placeholder'=>'filename_original')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('user_id', 'user_id:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('user_id', null, array('class'=> 'form-control', 'placeholder'=>'user_id')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('role_id', 'role_id:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('role_id', null, array('class'=> 'form-control', 'placeholder'=>'role_id')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('created_at', 'created_at:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('created_at', null, array('class'=> 'form-control', 'placeholder'=>'created_at')) !!}
+					</div>
+				</div>
+				<div class="form-group">
+					{!! Form::label('updated_at', 'updated_at:', array('class' => 'col-sm-3 control-label')) !!}
+					<div class="col-sm-7">
+						{!! Form::text('updated_at', null, array('class'=> 'form-control', 'placeholder'=>'updated_at')) !!}
+					</div>
+				</div>
+
+        </div>
+        <div class="box-footer">
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    {!! ClaravelHelpers::btnSave() !!}
+                    &nbsp;
+                    &nbsp;
+                    {!! ClaravelHelpers::btnCancelEdit() !!}
+                </div>
+            </div> 
+        </div>
+        {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+</section>
+	
+<script>
+    function refresh_page(){
+        <?php
+        $index_page = explode('/', \Request::path());
+        $jum = count($index_page) -1;
+        unset ($index_page[$jum]);
+        $index = join('/', $index_page);
+        echo 'var index_page=laravel_base + "/'.$index.'";';
+        ?>
+            $.ajax({
+                url : index_page,
+                type : 'GET',
+                beforeSend: function(){
+                    preloader.on();
+                },
+                success:function(html){
+                    preloader.off();
+                    $('#utama').html(html);
+                }
+            });
+             
+    }
+    $(document).ready(function(){
+        $('#batalkan,#back').on('click',function(e){
+            e.preventDefault();
+            refresh_page();
+        });
+        $('#simpan').on('submit',function(e){
+            var $this = $(this);
+            e.preventDefault();
+            bootbox.confirm('Simpan data?',function(a){
+                if (a == true){
+                    $.ajax({
+                        url : $this.attr('action') + '/edit' ,
+                        type : 'POST',
+                        data : $this.serialize(),
+                        beforeSend: function(){
+                            preloader.on();
+                        },
+                        success:function(html){
+                            preloader.off();
+                            if(html=='4'){
+                                notification('Berhasil Disimpan','success');
+                                refresh_page();
+                            }else{
+                                notification(html,'danger');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

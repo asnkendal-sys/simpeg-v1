@@ -1,0 +1,206 @@
+<?php
+$n = 0;
+$x = 0;
+$rs = BiodataModel::getRkgb($nip);
+$rs2 = BiodataModel::getRkgbtemp($nip);
+?>
+
+@if(count($rs->get()) > 0)
+    @foreach($rs->get() as $item)
+        <?php $n++;?>
+        <tr>
+            <td align="center">{!!$n!!}</td>
+            <td>{!!$item->noskkgb!!}</td>
+            <td align="center">{!!date('d-m-Y', strtotime($item->tmtkgb))!!}</td>
+            <td align="center">{!!date('d-m-Y', strtotime($item->tglkgb))!!}</td>
+            <td>{!!$item->golru." - ".$item->pangkat!!}</td>
+            <td align="center">{!!$item->mkthn!!}</td>
+            <td align="center">{!!$item->mkbln!!}</td>
+            <td>{!!"Rp. ".number_format($item->gaji)!!}</td>
+            <td>{!!($item->jabatan!='')?$item->jabatan:$item->penetap!!}</td>
+            <td align="center">{!!$item->jmlfile!!}</td>
+            <td align="right">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                        <span class="caret"></span> Aksi
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        @if($item->istte==1)
+                        <!--<li><a class="text-info" recid="{!!$item->id!!}" jns="SK KGB [{!!$item->tmtkgb!!}]" href="{!!url().'/efile/packages/upload/files/'.substr($item->nip,0,4).'/'.$item->nip.'/'.$item->filename!!}" target="_blank"><i class="fa fa-file-o"></i> Download File</a></li>-->
+                        <li><a class="text-info preview_sk_tte" recid="{!!$item->id!!}" jns="SK KGB [{!!$item->tmtkgb!!}]" href="javascript:void(0)" recfile="{!!url().'/efile/packages/upload/files/'.substr($item->nip,0,4).'/'.$item->nip.'/'.$item->filename!!}"><i class="fa fa-file-o"></i> Preview File</a></li>
+                        @else
+                        <li><a class="text-info kelolafile" recid="{!!$item->id!!}" jns="SK KGB [{!!$item->tmtkgb!!}]" href="javascript:void(0)" ><i class="fa fa-file-o"></i> Kelola File</a></li>
+                        @endif
+                        <li><a class="text-info edit" recid="{!!$item->id!!}" href="javascript:void(0)" id="edit"><i class="fa fa-pencil-square-o"></i> Edit</a></li>
+                        <li><a class="text-danger {{(session('role_id') <= 3)?'hapus':'hapusmin'}}" recid="{!!$item->id!!}" href="javascript:void(0)" id="hapus"><i class="fa fa-times-circle"></i> Hapus</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+@else
+    <tr>
+        <td colspan="10">Riwayat Kenaikan Gaji Berkala belum tersedia.</td>
+    </tr>
+@endif
+
+@if(count($rs2->get()) > 0)
+    <tr class="bg-primary">
+        <th colspan="10" class="text-left bg-primary nover">PERMOHONAN PERUBAHAN DATA</th>
+    </tr>
+    @foreach($rs2->get() as $item)
+        <?php $x++;?>
+        <tr>
+            <td rowspan="2" align="center">{!!$x!!}</td>
+            <td>{!!$item->noskkgb!!}</td>
+            <td align="center">{!!date('d-m-Y', strtotime($item->tmtkgb))!!}</td>
+            <td align="center">{!!date('d-m-Y', strtotime($item->tglkgb))!!}</td>
+            <td>{!!$item->golru." - ".$item->pangkat!!}</td>
+            <td align="center">{!!$item->mkthn!!}</td>
+            <td align="center">{!!$item->mkbln!!}</td>
+            <td>{!!"Rp. ".number_format($item->gaji)!!}</td>
+            <td>{!!($item->jabatan!='')?$item->jabatan:$item->penetap!!}</td>
+            <td align="center">{!!$item->jmlfile!!}</td>
+            <td rowspan="2" align="right">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                        <span class="caret"></span> Aksi
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a class="text-info editpermohonan" recid="{!!$item->id!!}" href="javascript:void(0)" ><i class="fa fa-pencil-square-o"></i> Edit</a></li>
+                        <li><a class="text-danger hapuspermohonan" recid="{!!$item->id!!}" href="javascript:void(0)" ><i class="fa fa-times-circle"></i> Hapus</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><em><small>{!!getKetaksi($item->idjnsaksi)!!}</small></em></td>
+            <td colspan="7" class="{!!($item->status == 2)?'alert-danger':''!!}"><em><small>Keterangan : {!!($item->ketditolak!='')?$item->ketditolak:'Belum ada tanggapan.'!!}</small></em></td>
+        </tr>
+    @endforeach
+@endif
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#rkgb  a.preview_sk_tte').on('click', function(e){
+            e.preventDefault();
+            claravel_modal('Preview SK TTE','Loading...','main_modal');
+            var file = $(this).attr('recfile');
+            var id = $(this).attr('recid');
+            $('#main_modal .modal-body').html(
+                '<embed src="'+file+'" type="application/pdf" width="100%" style="height: calc(100vh - 200px);"/><br><br><a class="text-info pull-right btn btn-primary" href="'+file+'" target="_blank"><i class="fa fa-download"></i> Download File</a>'
+            );
+        });
+
+        $('#rkgb a.kelolafile').on('click',function(e){
+            e.preventDefault();
+            claravel_modal('Kelola File Riwayat KGB','Loading...','kelola_file');
+            var id = $(this).attr('recid');
+            var nama_jenis = $(this).attr('jns');
+            $.ajax({
+                type:'post',
+                url : '{!!url()!!}/epersonal/biodata/kelolafile',
+                data: {'nip': '{{$nip}}', 'jenis': 7, 'subjenis': id, 'nama_jenis':nama_jenis, 'tb': 'r_gol', '_token' : '{!!csrf_token()!!}'},
+                success:function(html){
+                    $('#kelola_file .modal-body').html(html);
+                }
+            });
+        });
+
+        $('#rkgb a.edit').on('click',function(e){
+            e.preventDefault();
+            claravel_modal('Riwayat Kenaikan Gaji Berkala','Loading...','main_modal');
+            var id = $(this).attr('recid');
+            $.ajax({
+                type:'post',
+                url : '{!!url()!!}/epersonal/biodata/data/rkgb_form',
+                data: {'nip': $('#nip').val(), 'id': id, 'flag':2, 'tb': 'r_kgb', '_token' : '{!!csrf_token()!!}'},
+                success:function(html){
+                    $('#main_modal .modal-body').html(html);
+                }
+            });
+        });
+
+        $('#rkgb a.editpermohonan').on('click',function(e){
+            e.preventDefault();
+            claravel_modal('Permohonan Riwayat Kenaikan Gaji Berkala','Loading...','main_modal');
+            var id = $(this).attr('recid');
+            $.ajax({
+                type:'post',
+                url : '{!!url()!!}/epersonal/biodata/data/rkgb_form',
+                data: {'nip': $('#nip').val(), 'id': id, 'flag':2, 'tb': 'r_kgb_temp', '_token' : '{!!csrf_token()!!}'},
+                success:function(html){
+                    $('#main_modal .modal-body').html(html);
+                }
+            });
+        });
+
+        $('#rkgb a.hapusmin').on('click',function(e){
+            e.preventDefault();
+            claravel_modal('Riwayat Kenaikan Gaji Berkala','Loading...','main_modal');
+            var id = $(this).attr('recid');
+            $.ajax({
+                type:'post',
+                url : '{!!url()!!}/epersonal/biodata/data/rkgb_form',
+                data: {'nip': $('#nip').val(), 'id': id, 'flag':3, 'tb':'r_kgb', '_token' : '{!!csrf_token()!!}'},
+                success:function(html){
+                    $('#main_modal .modal-body').html(html);
+                }
+            });
+        });
+
+        $('#rkgb a.hapus').on('click',function(e){
+            e.preventDefault();
+            var id = $(this).attr('recid');
+            bootbox.confirm('Hapus?',function(a){
+                if(a == true){
+                    $.ajax({
+                        type:'post',
+                        url : '{!!url()!!}/epersonal/biodata/delriwayat',
+                        data: {'nip': $('#nip').val(), 'id': id, 'flag':3, 'tb':'r_kgb', '_token' : '{!!csrf_token()!!}'},
+                        beforeSend: function(){
+                            preloader.on();
+                        },
+                        success:function(html){
+                            preloader.off();
+                            if(html==9){
+                                notification('Data Berhasil Dihapus.','success');
+                                loadBiodata();
+                                loadRkgb();
+                            }else{
+                                notification(html,'danger');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        $('#rkgb a.hapuspermohonan').on('click',function(e){
+            e.preventDefault();
+            var id = $(this).attr('recid');
+            bootbox.confirm('Hapus?',function(a){
+                if(a == true){
+                    $.ajax({
+                        type:'post',
+                        url : '{!!url()!!}/epersonal/biodata/delriwayat',
+                        data: {'nip': $('#nip').val(), 'id': id, 'flag':3, 'tb':'r_kgb_temp', '_token' : '{!!csrf_token()!!}'},
+                        beforeSend: function(){
+                            preloader.on();
+                        },
+                        success:function(html){
+                            preloader.off();
+                            if(html==9){
+                                notification('Data Berhasil Dihapus.','success');
+                                loadBiodata();
+                                loadRkgb();
+                            }else{
+                                notification(html,'danger');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
